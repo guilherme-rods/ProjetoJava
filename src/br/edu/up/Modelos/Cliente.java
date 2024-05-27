@@ -1,15 +1,14 @@
 package br.edu.up.Modelos;
 
-public class Cliente {
+public abstract class Cliente {
 
     protected String nome;
     protected String telefone;
     protected Endereco endereco;
 
-    public Cliente(String nome, String telefone, Endereco endereco) {
+    public Cliente(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
-        this.endereco = endereco;
     }
 
     public String getNome() {

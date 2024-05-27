@@ -1,14 +1,13 @@
 package br.edu.up.Modelos;
 
 public class ClienteEmpresa extends Cliente{
-
     private String cnpj;
     private String nome_representante;
     private String telefone_representante;
 
-    public ClienteEmpresa(String nome, String telefone, Endereco endereco, String cnpj, String nome_representante,
+    public ClienteEmpresa(String nome, String telefone, String cnpj, String nome_representante,
             String telefone_representante) {
-        super(nome, telefone, endereco);
+        super(nome, telefone);
         this.cnpj = cnpj;
         this.nome_representante = nome_representante;
         this.telefone_representante = telefone_representante;

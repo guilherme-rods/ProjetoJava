@@ -4,8 +4,8 @@ public class ClientePessoa extends Cliente{
 
     private String cpf;
 
-    public ClientePessoa(String nome, String telefone, Endereco endereco, String cpf) {
-        super(nome, telefone, endereco);
+    public ClientePessoa(String nome, String telefone, String cpf) {
+        super(nome, telefone);
         this.cpf = cpf;
     }
 
