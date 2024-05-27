@@ -5,7 +5,7 @@ Projeto de desenvolvimento em java - 1º Sem 2024
 |        Nome         |   RGM    |
 |:-------------------:|:--------:|
 |   Gabriel Laurino   |    -     |
-| Guilherme Rodrigues |    -     |
+| Guilherme Rodrigues | 36271195 |
 |        Jean         |    -     |
 | João Pedro Capoani  | 32583117 |
 |   Lucas Levorato    |    -     |
