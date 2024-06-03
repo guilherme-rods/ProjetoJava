@@ -2,7 +2,7 @@ package br.edu.up.Modelos;
 
 import java.util.List;
 
-public class Conta {
+public abstract class Conta {
 
     private int num_conta;
     private List<Cartao> cartoes;
