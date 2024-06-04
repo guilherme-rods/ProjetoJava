@@ -13,7 +13,8 @@ public class ClienteEmpresa extends Cliente{
         this.telefone_representante = telefone_representante;
     }
 
-    public String getCnpj() {
+    @Override
+    public String getDocumento() {
         return cnpj;
     }
 
@@ -39,11 +40,13 @@ public class ClienteEmpresa extends Cliente{
 
     @Override
     public String toString() {
-        return "ClienteEmpresa [nome=" + nome + 
-        ", cnpj=" + cnpj + 
-        ", telefone=" + telefone + 
-        ", nome_representante=" + nome_representante + 
-        ", endereco=" + endereco + 
-        ", telefone_representante=" + telefone_representante + "]";
+        var sb = new StringBuilder();
+        sb.append("Nome: ").append(getNome()).append('\n');
+        sb.append("Telefone: ").append(getTelefone()).append('\n');
+        sb.append("Documento: ").append(getDocumento()).append('\n');
+        sb.append("Nome representante: ").append(getNome_representante()).append('\n');
+        sb.append("Telefone representante: ").append(getTelefone_representante()).append('\n');
+
+        return sb.toString();
     }
 }
