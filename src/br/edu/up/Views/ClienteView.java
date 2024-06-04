@@ -6,6 +6,7 @@ import br.edu.up.Modelos.ClienteEmpresa;
 import br.edu.up.Modelos.ClientePessoa;
 import br.edu.up.Modelos.Endereco;
 
+import javax.management.ObjectInstance;
 import java.util.Scanner;
 
 public class ClienteView {
@@ -94,5 +95,58 @@ public class ClienteView {
         }
 
         System.out.println("Cliente adicionado");
+    }
+
+    public void Edit() {
+        System.out.println("Digite o documento do cliente que quer editar");
+
+        try {
+            var cliente = _controller.Get(_scanner.nextLine());
+            System.out.println(cliente);
+
+            System.out.println("Qual campo você quer editar?");
+            System.out.println("1) Nome");
+            System.out.println("2) Documento");
+            System.out.println("3) Telefone");
+            if(cliente instanceof ClienteEmpresa){
+
+                System.out.println("4) Nome representante");
+                System.out.println("5) Telefone representante");
+            }
+
+            var opcaoEscolhida = _scanner.nextInt();
+            _scanner.nextLine();
+
+            if(cliente instanceof ClientePessoa && (opcaoEscolhida == 4 || opcaoEscolhida == 5)){
+                throw new IllegalArgumentException("Opção escolhida inválida!");
+            }
+
+            switch (opcaoEscolhida) {
+                case 1:
+                    System.out.println("Digite o nome");
+                    cliente.setNome(_scanner.nextLine());
+                    break;
+                case 3:
+                    System.out.println("Digite o documento");
+                    cliente.setTelefone(_scanner.nextLine());
+                    break;
+                case 4:
+                    System.out.println("Digite o nome do representante");
+                    assert cliente instanceof ClienteEmpresa;
+                    ((ClienteEmpresa) cliente).setNome_representante(_scanner.nextLine());
+                    break;
+                case 5:
+                    System.out.println("Digite o telefone do representante");
+                    assert cliente instanceof ClienteEmpresa;
+                    ((ClienteEmpresa) cliente).setTelefone_representante(_scanner.nextLine());
+                    break;
+                default:
+                    throw new IllegalArgumentException("Opção escolhida inválida!");
+            }
+
+            _controller.Update(cliente);
+        } catch (IllegalArgumentException e){
+            System.err.println(e.getMessage());
+        }
     }
 }

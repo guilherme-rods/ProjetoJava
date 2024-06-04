@@ -1,5 +1,5 @@
 # Sistema bancário
-Projeto de desenvolvimento em java - 1º Sem 2024
+Projeto de desenvolvimento em Java - 1º Sem 2024
 
 ## Equipe
 |        Nome         |   RGM    |

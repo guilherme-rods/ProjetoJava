@@ -9,7 +9,8 @@ public class ClientePessoa extends Cliente{
         this.cpf = cpf;
     }
 
-    public String getCpf() {
+    @Override
+    public String getDocumento() {
         return cpf;
     }
 
@@ -19,9 +20,11 @@ public class ClientePessoa extends Cliente{
 
     @Override
     public String toString() {
-        return "ClientePessoa [nome=" + nome + 
-        ", cpf=" + cpf + 
-        ", telefone=" + telefone + 
-        ", endereco=" + endereco + "]";
+        var sb = new StringBuilder();
+        sb.append("Nome: ").append(getNome()).append('\n');
+        sb.append("Telefone: ").append(getTelefone()).append('\n');
+        sb.append("Documento: ").append(getDocumento()).append('\n');
+
+        return sb.toString();
     }
 }

@@ -34,5 +34,6 @@ public abstract class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
+    public abstract String getDocumento();
 }
