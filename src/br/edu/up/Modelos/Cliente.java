@@ -12,6 +12,10 @@ public abstract class Cliente {
         this.telefone = telefone;
     }
 
+    public Cliente(String nome2, String telefone2) {
+        //TODO Auto-generated constructor stub
+    }
+
     public int getId() {
         return id;
     }
