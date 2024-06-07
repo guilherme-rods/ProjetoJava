@@ -6,6 +6,13 @@ public abstract class Conta {
     protected double  saldo;
     protected Cliente cliente;
 
+    public Conta(int num_conta, double saldo, Cliente cliente) {
+        this.num_conta = num_conta;
+        this.saldo = saldo;
+        this.cliente = cliente;
+        
+    }
+
     public int getNum_conta() {
         return num_conta;
     }
@@ -22,12 +29,12 @@ public abstract class Conta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public abstract void sacar(double valor);
-    public abstract void depositar(double valor);
+    public abstract String movimentar(double valor, boolean entrada);
 
     @Override
     public String toString() {
         return "Conta [num_conta=" + num_conta +
         ", cliente=" + cliente + "]";
     }
+    public abstract String close();
 }

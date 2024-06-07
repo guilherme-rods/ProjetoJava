@@ -2,41 +2,40 @@ package br.edu.up.Modelos;
 
 public class ContaPoupanca extends Conta {
     
-    private double rendimentoMensal;
+    private double rendimentoMensal = 0.6; // taxa selic
 
-    public ContaPoupanca(int num_conta, double saldo, Cliente cliente, double rendimentoMensal) {
-        this.num_conta = num_conta;
-        this.saldo = saldo;
-        this.cliente = cliente;
-        this.rendimentoMensal = rendimentoMensal;
+    public ContaPoupanca(int num_conta, double saldo, Cliente cliente) {
+        super(num_conta, saldo, cliente);
+        
     }
 
     public double getRendimentoMensal() {
         return rendimentoMensal;
     }
 
-    public void setRendimentoMensal(double rendimentoMensal) {
-        this.rendimentoMensal = rendimentoMensal;
-    }
+    public String movimentar(double valor, boolean entrada) {
+        if (entrada) {
+            saldo += valor;
+            return "depositado";
+        }
 
-    public void aplicarRendimento() {
-        saldo += saldo * rendimentoMensal / 100;
-    }
-
-    public void sacar(double valor) {
         if (valor <= saldo) {
             saldo -= valor;
-        } else {
-            throw new IllegalArgumentException("Saldo insuficiente.");
-        }
-    }
+            return "saque efetuado saldo restante é de " + saldo;
 
-    public void depositar(double valor) {
-        saldo += valor;
+        }
+        throw new IllegalArgumentException("Saldo insuficiente.");
+
     }
 
     @Override
     public String toString() {
         return "ContaPoupanca [num_conta=" + num_conta + ", saldo=" + saldo + ", cliente=" + cliente + ", rendimentoMensal=" + rendimentoMensal + "]";
     }
+    public String close(){
+        String msg = "saque realizado "+ saldo;
+       
+        saldo = 0 ;
+       return msg;
+   }
 }
