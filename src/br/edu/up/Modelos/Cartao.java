@@ -7,18 +7,20 @@ public class Cartao {
     private int num_cartao;
     private int cod_validacao;
     private Date validade;
-    private String nome;
+    private Cliente cliente;
+    private String bandeira;
     private boolean titular;
     private boolean bloqueado;
     private double lim_credito;
     private TipoCartaoEnum tipo_operacao;
 
-    public Cartao(int num_cartao, int cod_validacao, Date validade, String nome, boolean titular, boolean bloqueado,
+    public Cartao(int num_cartao, int cod_validacao, Date validade, Cliente cliente, String bandeira, boolean titular, boolean bloqueado,
             double lim_credito, TipoCartaoEnum tipo_operacao) {
         this.num_cartao = num_cartao;
         this.cod_validacao = cod_validacao;
         this.validade = validade;
-        this.nome = nome;
+        this.cliente = cliente;
+        this.bandeira = bandeira;
         this.titular = titular;
         this.bloqueado = bloqueado;
         this.lim_credito = lim_credito;
@@ -50,12 +52,20 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public String getNome() {
-        return nome;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getBandeira(){
+        return bandeira;
+    }
+
+    public void setBandeira(String bandeira){
+        this.bandeira = bandeira;
     }
 
     public boolean isTitular() {
@@ -95,7 +105,7 @@ public class Cartao {
         return "Cartao [num_cartao=" + num_cartao + 
         ", cod_validacao=" + cod_validacao + 
         ", validade=" + validade + 
-        ", nome=" + nome + 
+        ", nome=" + cliente.getNome() + 
         ", titular=" + titular + 
         ", bloqueado=" + bloqueado + 
         ", lim_credito=" + lim_credito + 
