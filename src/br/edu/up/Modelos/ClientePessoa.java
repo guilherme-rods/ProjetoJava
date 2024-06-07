@@ -14,6 +14,11 @@ public class ClientePessoa extends Cliente{
         return cpf;
     }
 
+    @Override
+    public void setDocumento(String documento) {
+        this.cpf = documento;
+    }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }

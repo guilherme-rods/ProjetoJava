@@ -1,12 +1,10 @@
 package br.edu.up.Views;
 
 import br.edu.up.Controller.ClienteController;
-import br.edu.up.Modelos.Cliente;
 import br.edu.up.Modelos.ClienteEmpresa;
 import br.edu.up.Modelos.ClientePessoa;
 import br.edu.up.Modelos.Endereco;
 
-import javax.management.ObjectInstance;
 import java.util.Scanner;
 
 public class ClienteView {
@@ -126,8 +124,12 @@ public class ClienteView {
                     System.out.println("Digite o nome");
                     cliente.setNome(_scanner.nextLine());
                     break;
+                case 2:
+                    System.out.println("Digite o novo documento");
+                    cliente.setDocumento(_scanner.nextLine());
+                    break;
                 case 3:
-                    System.out.println("Digite o documento");
+                    System.out.println("Digite o telefone");
                     cliente.setTelefone(_scanner.nextLine());
                     break;
                 case 4:

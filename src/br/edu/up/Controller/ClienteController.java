@@ -2,24 +2,27 @@ package br.edu.up.Controller;
 
 import br.edu.up.Modelos.Cliente;
 import br.edu.up.Modelos.Endereco;
-import netscape.javascript.JSObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteController {
     private List<Cliente> _listaClientes;
+    private int qtdJaAdd = 0;
     public ClienteController(){
         _listaClientes = new ArrayList<>();
     }
 
     public int AddCliente(Cliente cliente){
+        qtdJaAdd++;
+        cliente.setId(qtdJaAdd);
         _listaClientes.add(cliente);
-        return _listaClientes.size();
+
+        return qtdJaAdd;
     }
 
-    public void AddEndereco(int clienteIndex, Endereco endereco){
-        _listaClientes.get(clienteIndex).setEndereco(endereco);
+    public void AddEndereco(int idCliente, Endereco endereco){
+        Get(idCliente).setEndereco(endereco);
     }
 
     public Cliente Get(String doc){
@@ -32,10 +35,20 @@ public class ClienteController {
         throw new IllegalArgumentException("Cliente não encontrado");
     }
 
+    public Cliente Get(int id){
+        for (Cliente listaCliente : _listaClientes) {
+            if (listaCliente.getId() == id) {
+                return listaCliente;
+            }
+        }
+
+        throw new IllegalArgumentException("Cliente não encontrado");
+    }
+
     public void Update(Cliente cliente){
-        for(Cliente c : _listaClientes){
-            if(c.getDocumento().equals(cliente.getDocumento())){
-                c = cliente;
+        for(var i = 0; i < _listaClientes.size(); i++){
+            if(_listaClientes.get(i).getId() == cliente.getId()){
+                _listaClientes.set(i, cliente);
                 break;
             }
         }

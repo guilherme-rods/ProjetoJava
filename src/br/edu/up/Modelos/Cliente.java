@@ -1,14 +1,22 @@
 package br.edu.up.Modelos;
 
 public abstract class Cliente {
-
+    protected int id;
     protected String nome;
     protected String telefone;
     protected Endereco endereco;
 
-    public Cliente(String nome, String telefone) {
+    public Cliente(int id, String nome, String telefone) {
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -36,4 +44,5 @@ public abstract class Cliente {
     }
 
     public abstract String getDocumento();
+    public abstract void setDocumento(String documento);
 }
