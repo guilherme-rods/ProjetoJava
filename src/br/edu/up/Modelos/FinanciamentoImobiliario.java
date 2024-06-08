@@ -11,7 +11,7 @@ public class FinanciamentoImobiliario extends Financiamento {
         this.valorFinanciamentoImobiliario = valorFinanciamentoImobiliario;
     }
 
-    public int getNumContratoImobiliario() {
+    public int getNumContrato() {
         return NumContratoImobiliario;
     }
 

@@ -11,7 +11,7 @@ public class FinanciamentoVeicular extends Financiamento{
         this.valorFinanciamentoVeicular = valorFinanciamentoVeicular;
     }
 
-    public int getNumContratoVeicular() {
+    public int getNumContrato() {
         return NumContratoVeicular;
     }
 

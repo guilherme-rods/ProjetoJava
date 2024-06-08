@@ -59,22 +59,22 @@ public class ContaDAO {
         return contas;
     }
 
-    public void salvarContas(List<Conta> contas, String headder) throws IOException {
+    public void salvarContas(List<Conta> contas) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
-        bw.write(headder + "\n");
+        bw.write("num_conta;tipo;saldo;cliente_id;especicação\n");
         for (Conta conta : contas) {
             bw.write(conta.ToStringCSV() + "\n");
         }
         bw.close();
     }
 
-    public void adicionarConta(Conta conta, String headder) throws IOException {
+    public void adicionarConta(Conta conta) throws IOException {
         List<Conta> contas = lerContas();
         contas.add(conta);
-        salvarContas(contas, headder);
+        salvarContas(contas);
     }
 
-    public void atualizarConta(Conta contaAtualizada, String headder) throws IOException {
+    public void atualizarConta(Conta contaAtualizada) throws IOException {
         List<Conta> contas = lerContas();
         for (int i = 0; i < contas.size(); i++) {
             Conta conta = contas.get(i);
@@ -83,12 +83,12 @@ public class ContaDAO {
                 break;
             }
         }
-        salvarContas(contas, headder);
+        salvarContas(contas);
     }
 
-    public void deletarConta(int num_conta, String headder) throws IOException {
+    public void deletarConta(int num_conta) throws IOException {
         List<Conta> contas = lerContas();
         contas.removeIf(conta -> conta.getNum_conta() == num_conta);
-        salvarContas(contas, headder);
+        salvarContas(contas);
     }
 }

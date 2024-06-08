@@ -16,6 +16,8 @@ public abstract class Financiamento {
         Categoria = categoria;
     }
 
+    public abstract int getNumContrato(); 
+    
     
     
 }
