@@ -11,7 +11,7 @@ public class ContaControler {
         this.contas = new ArrayList<>();
     }
 
-public String criar(int tipo,int num_conta,double saldo,Cliente cliente){
+public String criar(int tipo,int num_conta,double saldo,int cliente){
     Conta conta;
     String msg ="";
     switch (tipo) {

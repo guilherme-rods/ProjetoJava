@@ -4,9 +4,10 @@ public abstract class Conta {
 
     protected int num_conta;
     protected double  saldo;
-    protected Cliente cliente;
+    protected int cliente;
+    protected int tipo;
 
-    public Conta(int num_conta, double saldo, Cliente cliente) {
+    public Conta(int num_conta, double saldo, int cliente) {
         this.num_conta = num_conta;
         this.saldo = saldo;
         this.cliente = cliente;
@@ -22,11 +23,11 @@ public abstract class Conta {
     }
 
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
     public abstract String movimentar(double valor, boolean entrada);
@@ -37,4 +38,5 @@ public abstract class Conta {
         ", cliente=" + cliente + "]";
     }
     public abstract String close();
+    public abstract String ToStringCSV();
 }

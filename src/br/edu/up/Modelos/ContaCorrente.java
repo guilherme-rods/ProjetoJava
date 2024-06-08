@@ -3,11 +3,30 @@ package br.edu.up.Modelos;
 public class ContaCorrente extends Conta {
 
     private double depositoInicial; 
-    private double limiteChequeEspecial = depositoInicial*2  ;
+    private double limiteChequeEspecial = depositoInicial*2;
 
-    public ContaCorrente(int num_conta, double saldo, Cliente cliente) {
+    
+
+    public double getDepositoInicial() {
+        return depositoInicial;
+    }
+
+    public void setDepositoInicial(double depositoInicial) {
+        this.depositoInicial = depositoInicial;
+    }
+
+    public double getLimiteChequeEspecial() {
+        return limiteChequeEspecial;
+    }
+
+    public void setLimiteChequeEspecial(double limiteChequeEspecial) {
+        this.limiteChequeEspecial = limiteChequeEspecial;
+    }
+
+    public ContaCorrente(int num_conta, double saldo, int cliente) {
         super(num_conta, saldo, cliente);
         this.depositoInicial = saldo;
+        this.tipo = 1;
         
     }
 
@@ -39,6 +58,11 @@ public class ContaCorrente extends Conta {
     public String toString() {
         return "ContaCorrente [num_conta=" + num_conta + ", saldo=" + saldo + ", cliente=" + cliente
                 + ", limiteChequeEspecial=" + limiteChequeEspecial + "]";
+    }
+    @Override
+    public String ToStringCSV() {
+        
+        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + limiteChequeEspecial;
     }
     public String close(){
         String msg = "saque realizado "+ saldo;

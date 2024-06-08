@@ -29,7 +29,7 @@ public class ContaView {
             switch (opcao) {
                 case 1:
                 
-                    criarConta(cliente.Get(doc));
+                    criarConta(1);
                     break;
                 case 2:
                     buscarConta();
@@ -46,7 +46,7 @@ public class ContaView {
         } while (opcao != 4);
     }
 
-    public void criarConta(Cliente cliente) {
+    public void criarConta(int cliente) {
         System.out.println("Escolha o tipo de conta:");
         System.out.println("1. Conta Poupança");
         System.out.println("2. Conta Corrente");

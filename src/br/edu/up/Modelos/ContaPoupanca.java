@@ -4,9 +4,38 @@ public class ContaPoupanca extends Conta {
     
     private double rendimentoMensal = 0.6; // taxa selic
 
-    public ContaPoupanca(int num_conta, double saldo, Cliente cliente) {
+    public ContaPoupanca(int num_conta, double saldo, int cliente) {
         super(num_conta, saldo, cliente);
+        this.tipo = 2;
         
+    }
+
+    public void setRendimentoMensal(double rendimentoMensal) {
+        this.rendimentoMensal = rendimentoMensal;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(rendimentoMensal);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ContaPoupanca other = (ContaPoupanca) obj;
+        if (Double.doubleToLongBits(rendimentoMensal) != Double.doubleToLongBits(other.rendimentoMensal))
+            return false;
+        return true;
     }
 
     public double getRendimentoMensal() {
@@ -38,4 +67,7 @@ public class ContaPoupanca extends Conta {
         saldo = 0 ;
        return msg;
    }
+   public String ToStringCSV() {
+    return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + rendimentoMensal;
+}
 }

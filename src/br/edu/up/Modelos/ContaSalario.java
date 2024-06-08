@@ -2,8 +2,9 @@ package br.edu.up.Modelos;
 
 public class ContaSalario extends Conta {
 
-    public ContaSalario(int num_conta, double saldo, Cliente cliente) {
+    public ContaSalario(int num_conta, double saldo, int cliente) {
         super(num_conta, saldo, cliente);
+        this.tipo = 3;
         
     }
 
@@ -18,8 +19,12 @@ public class ContaSalario extends Conta {
             return "saque efetuado saldo restante é de " + saldo;
 
         }
+        
         throw new IllegalArgumentException("Saldo insuficiente.");
 
+    }
+    public String ToStringCSV() {
+        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente;
     }
 
     @Override
