@@ -66,7 +66,7 @@ public class ContaDAO {
 
     public void salvarContas(List<Conta> contas) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
-        bw.write("num_conta;tipo;saldo;cliente_id;especicação\n");
+        bw.write("num_conta;tipo;saldo;cliente_id;especicação;ativa\n");
         for (Conta conta : contas) {
             bw.write(conta.ToStringCSV() + "\n");
         }
@@ -76,24 +76,6 @@ public class ContaDAO {
     public void adicionarConta(Conta conta) throws IOException {
         List<Conta> contas = lerContas();
         contas.add(conta);
-        salvarContas(contas);
-    }
-
-    public void atualizarConta(Conta contaAtualizada) throws IOException {
-        List<Conta> contas = lerContas();
-        for (int i = 0; i < contas.size(); i++) {
-            Conta conta = contas.get(i);
-            if (conta.getNum_conta() == contaAtualizada.getNum_conta()) {
-                contas.set(i, contaAtualizada);
-                break;
-            }
-        }
-        salvarContas(contas);
-    }
-
-    public void deletarConta(int num_conta) throws IOException {
-        List<Conta> contas = lerContas();
-        contas.removeIf(conta -> conta.getNum_conta() == num_conta);
         salvarContas(contas);
     }
 }

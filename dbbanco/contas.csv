@@ -1,4 +1,4 @@
-num_conta;tipo;saldo;cliente_id;especicação
+num_conta;tipo;saldo;cliente_id;especicação;ativa
 1;1;0.0;1;0.0;true
 2;1;0.0;1;0.0;true
 3;1;0.0;1;0.0;true
@@ -7,7 +7,7 @@ num_conta;tipo;saldo;cliente_id;especicação
 6;1;0.0;1;0.0;true
 7;1;0.0;1;0.0;true
 11;1;0.0;1;0.0;true
-12;1;0.0;1;0.0;true
+12;1;0.0;1;0.0;false
 13;1;0.0;1;0.0;true
 14;1;0.0;1;0.0;true
 15;1;0.0;1;0.0;true
@@ -24,3 +24,16 @@ num_conta;tipo;saldo;cliente_id;especicação
 26;1;0.0;1;0.0;true
 27;1;0.0;1;0.0;true
 28;1;0.0;1;0.0;true
+29;1;0.0;1;0.0;true
+30;1;0.0;1;0.0;true
+31;1;0.0;1;0.0;true
+32;1;1000.0;10;0.0;true
+33;3;1000.0;10;;false
+34;3;1000.0;10;;false
+35;2;1000.0;10;0.6;true
+36;2;1000.0;10;0.6;true
+37;2;1000.0;10;0.6;true
+38;3;1000.0;10;;false
+39;3;1000.0;10;;true
+40;3;1000.0;10;;true
+41;3;1000.0;10;;true
