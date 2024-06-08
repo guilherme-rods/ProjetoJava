@@ -5,7 +5,13 @@ public class ContaCorrente extends Conta {
     private double depositoInicial; 
     private double limiteChequeEspecial = depositoInicial*2;
 
-    
+    public ContaCorrente(int num_conta, double saldo, int cliente) {
+        super(num_conta, saldo, cliente);
+        this.depositoInicial = saldo;
+        this.tipo = 1;
+        ativa = true;
+        
+    }
 
     public double getDepositoInicial() {
         return depositoInicial;
@@ -23,12 +29,7 @@ public class ContaCorrente extends Conta {
         this.limiteChequeEspecial = limiteChequeEspecial;
     }
 
-    public ContaCorrente(int num_conta, double saldo, int cliente) {
-        super(num_conta, saldo, cliente);
-        this.depositoInicial = saldo;
-        this.tipo = 1;
-        
-    }
+    
 
     public String movimentar(double valor, boolean entrada) {
         if (entrada) {
@@ -62,7 +63,7 @@ public class ContaCorrente extends Conta {
     @Override
     public String ToStringCSV() {
         
-        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + limiteChequeEspecial;
+        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + limiteChequeEspecial+";"+ativa;
     }
     public String close(){
         String msg = "saque realizado "+ saldo;
@@ -70,6 +71,7 @@ public class ContaCorrente extends Conta {
             msg = "conta encerrada, Boleto de quitação será enviado em até 3 dias uteis";
         }
         saldo = 0 ;
+        ativa = false;
        return msg;
    }
    

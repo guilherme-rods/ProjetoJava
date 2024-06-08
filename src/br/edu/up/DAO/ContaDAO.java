@@ -31,12 +31,14 @@ public class ContaDAO {
             int tipo = Integer.parseInt(dados[1]);
             double saldo = Double.parseDouble(dados[2]);
             int cliente_id = Integer.parseInt(dados[3]);
+            boolean ativa = Boolean.parseBoolean(dados[5]);
 
             switch (tipo) {
                 case 1:
                     ContaCorrente contac = new ContaCorrente(numconta, saldo, cliente_id);
                     Double limite = Double.parseDouble(dados[4]);
                     contac.setLimiteChequeEspecial(limite);
+                    contac.setAtiva(ativa);
                     contas.add(contac);
 
                     break;
@@ -45,10 +47,13 @@ public class ContaDAO {
                     ContaPoupanca contap = new ContaPoupanca(numconta, saldo, cliente_id);
                     Double rendimento = Double.parseDouble(dados[4]);
                     contap.setRendimentoMensal(rendimento);
+                    contap.setAtiva(ativa);
                     contas.add(contap);
                     break;
                 case 3:
-                    contas.add(new ContaSalario(numconta, saldo, cliente_id));
+                ContaSalario contaSalario = new ContaSalario(numconta, saldo, cliente_id);
+                contaSalario.setAtiva(ativa);
+                    contas.add(contaSalario);
                     break;
                 default:
                     break;

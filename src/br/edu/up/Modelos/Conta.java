@@ -6,6 +6,15 @@ public abstract class Conta {
     protected double  saldo;
     protected int cliente;
     protected int tipo;
+    protected boolean ativa;
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
+    }
 
     public Conta(int num_conta, double saldo, int cliente) {
         this.num_conta = num_conta;

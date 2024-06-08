@@ -5,6 +5,7 @@ public class ContaSalario extends Conta {
     public ContaSalario(int num_conta, double saldo, int cliente) {
         super(num_conta, saldo, cliente);
         this.tipo = 3;
+        ativa = true;
         
     }
 
@@ -24,7 +25,7 @@ public class ContaSalario extends Conta {
 
     }
     public String ToStringCSV() {
-        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente+";";
+        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente+";"+ativa;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class ContaSalario extends Conta {
     }
     public String close(){
         String msg = "saque realizado "+ saldo;
-       
+       ativa = false;
         saldo = 0 ;
        return msg;
    }

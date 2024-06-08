@@ -7,6 +7,7 @@ public class ContaPoupanca extends Conta {
     public ContaPoupanca(int num_conta, double saldo, int cliente) {
         super(num_conta, saldo, cliente);
         this.tipo = 2;
+        ativa = true;
         
     }
 
@@ -63,11 +64,12 @@ public class ContaPoupanca extends Conta {
     }
     public String close(){
         String msg = "saque realizado "+ saldo;
-       
+
+       ativa = false;
         saldo = 0 ;
        return msg;
    }
    public String ToStringCSV() {
-    return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + rendimentoMensal;
+    return num_conta + ";" + tipo + ";" + saldo + ";" + cliente + ";" + rendimentoMensal+";"+ativa;
 }
 }

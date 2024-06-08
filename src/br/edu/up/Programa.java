@@ -8,6 +8,7 @@ public class Programa {
     public static void main(String[] args) {
         String caminhoArquivo = "teste.csv";
         CsvDAO dao = new CsvDAO(caminhoArquivo);
+        ContaDAO conta = new ContaDAO("contas.csv");
 
         try {            
             System.out.println("Registros atuais:");
@@ -17,6 +18,10 @@ public class Programa {
             
             Registro novoRegistro = new Registro(4, "Daniel", 28);
             dao.adicionarRegistro(novoRegistro,"id;nome;idade");
+            ContaCorrente contaC = new ContaCorrente(0, 0, 0);
+            contaC = new ContaCorrente(conta.lerContas().get(conta.lerContas().size() - 1).getNum_conta()+1, 0, 1);
+
+            conta.adicionarConta(contaC);
             
             Registro registroAtualizado = new Registro(2, "Bruno Silva", 31);
             dao.atualizarRegistro(registroAtualizado,"id;nome;idade");
