@@ -15,6 +15,7 @@ public class Programa {
 
             int numconta = conta.lerContas().get(conta.lerContas().size() - 1).getNum_conta()+1;
             cConta.criar(3,numconta , 1000, 10); 
+            cConta.encerrar(11);
         } catch (IOException e) {
             e.printStackTrace();
         }
