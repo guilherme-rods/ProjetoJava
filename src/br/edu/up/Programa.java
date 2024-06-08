@@ -12,7 +12,9 @@ public class Programa {
         ContaControler cConta = new ContaControler();
 
         try {           
-            cConta.criar(3, conta.lerContas().get(conta.lerContas().size() - 1).getNum_conta()+1, 1000, 10); 
+
+            int numconta = conta.lerContas().get(conta.lerContas().size() - 1).getNum_conta()+1;
+            cConta.criar(3,numconta , 1000, 10); 
         } catch (IOException e) {
             e.printStackTrace();
         }

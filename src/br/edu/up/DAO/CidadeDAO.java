@@ -19,7 +19,7 @@ public class CidadeDAO {
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                if (linha.startsWith("cod_cidade")) // Ignora o cabeçalho
+                if (linha.startsWith("cod_cidade"))
                     continue;
 
                 String[] dados = linha.split(";");

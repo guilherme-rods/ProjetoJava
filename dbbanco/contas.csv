@@ -34,6 +34,7 @@ num_conta;tipo;saldo;cliente_id;especicação;ativa
 36;2;1000.0;10;0.6;true
 37;2;1000.0;10;0.6;true
 38;3;1000.0;10;;false
-39;3;1000.0;10;;true
+39;3;1000.0;10;;false
 40;3;1000.0;10;;true
 41;3;1000.0;10;;true
+42;3;1000.0;10;;true
