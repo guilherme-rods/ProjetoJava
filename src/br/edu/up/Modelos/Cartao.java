@@ -7,17 +7,17 @@ public class Cartao {
     private int num_cartao;
     private int cod_validacao;
     private Date validade;
-    private Cliente cliente;
+    private int cliente;
     private String bandeira;
     private boolean titular;
     private boolean bloqueado;
     private double lim_credito;
-    private TipoCartaoEnum tipo_operacao;
+    private String tipo_operacao;
     private Date emissao;
     private Date vencimento;
 
-    public Cartao(int num_cartao, int cod_validacao, Date validade, Cliente cliente, String bandeira, boolean titular, boolean bloqueado,
-            double lim_credito, TipoCartaoEnum tipo_operacao, Date emissao, Date vencimento) {
+    public Cartao(int num_cartao, int cod_validacao, Date validade, int cliente, String bandeira, boolean titular, boolean bloqueado,
+            double lim_credito, String tipo_operacao, Date emissao, Date vencimento) {
         this.num_cartao = num_cartao;
         this.cod_validacao = cod_validacao;
         this.validade = validade;
@@ -56,11 +56,11 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 
@@ -96,11 +96,11 @@ public class Cartao {
         this.lim_credito = lim_credito;
     }
 
-    public TipoCartaoEnum getTipo_operacao() {
+    public String getTipo_operacao() {
         return tipo_operacao;
     }
 
-    public void setTipo_operacao(TipoCartaoEnum tipo_operacao) {
+    public void setTipo_operacao(String tipo_operacao) {
         this.tipo_operacao = tipo_operacao;
     }
     public Date getEmissao(){
@@ -116,10 +116,15 @@ public class Cartao {
         return "Cartao [num_cartao=" + num_cartao + 
         ", cod_validacao=" + cod_validacao + 
         ", validade=" + validade + 
-        ", nome=" + cliente.getNome() + 
+        ", nome=" + cliente + 
         ", titular=" + titular + 
         ", bloqueado=" + bloqueado + 
         ", lim_credito=" + lim_credito + 
         ", tipo_operacao=" + tipo_operacao + "]";
+    }
+
+
+    public Date getVencimento() {
+        return vencimento;
     }
 } 
