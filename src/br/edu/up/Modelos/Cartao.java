@@ -13,9 +13,11 @@ public class Cartao {
     private boolean bloqueado;
     private double lim_credito;
     private TipoCartaoEnum tipo_operacao;
+    private Date emissao;
+    private Date vencimento;
 
     public Cartao(int num_cartao, int cod_validacao, Date validade, Cliente cliente, String bandeira, boolean titular, boolean bloqueado,
-            double lim_credito, TipoCartaoEnum tipo_operacao) {
+            double lim_credito, TipoCartaoEnum tipo_operacao, Date emissao, Date vencimento) {
         this.num_cartao = num_cartao;
         this.cod_validacao = cod_validacao;
         this.validade = validade;
@@ -25,6 +27,8 @@ public class Cartao {
         this.bloqueado = bloqueado;
         this.lim_credito = lim_credito;
         this.tipo_operacao = tipo_operacao;
+        this.emissao = emissao;
+        this.vencimento = vencimento;
     }
 
 
@@ -98,6 +102,13 @@ public class Cartao {
 
     public void setTipo_operacao(TipoCartaoEnum tipo_operacao) {
         this.tipo_operacao = tipo_operacao;
+    }
+    public Date getEmissao(){
+        return emissao;
+    }
+    
+    public void setEmissao(Date emissao){
+        this.emissao = emissao;
     }
 
     @Override
