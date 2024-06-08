@@ -16,7 +16,7 @@ public class CidadeDAO {
 
     public List<Cidade> lerCidades() throws IOException {
         List<Cidade> cidades = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo), "UTF-8"))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 if (linha.startsWith("cod_cidade")) // Ignora o cabeçalho

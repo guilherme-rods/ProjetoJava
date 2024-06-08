@@ -1,0 +1,5 @@
+ID;CEP;Estado;CidadeID;Bairro;Logradouro;NumeroResidencial
+1;123456;PR;8;Guabitoruba;Rua Legal;123
+2;213546897;SC;2;Portao;Rua Estranha;456
+3;12345-678;PR;8;Centro;Rua;1234
+4;13265-894;PR;8;Bigorrilho;Rua alta;998

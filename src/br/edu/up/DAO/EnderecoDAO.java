@@ -1,54 +1,81 @@
 package br.edu.up.DAO;
 
 import br.edu.up.Modelos.Endereco;
-
+import br.edu.up.Modelos.Cidade;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnderecoDAO {
     private String arquivo;
-    private String header = "CEP;Estado;Cidade;Bairro;Logradouro;NumeroResidencial";
+    private String header = "ID;CEP;Estado;CidadeID;Bairro;Logradouro;NumeroResidencial";
+    private CidadeDAO cidadeDAO;
 
-    public EnderecoDAO(String arquivo) {
+    public EnderecoDAO(String arquivo, CidadeDAO cidadeDAO) {
         this.arquivo = "./dbbanco/" + arquivo;
+        this.cidadeDAO = cidadeDAO;
     }
 
     public List<Endereco> lerEnderecos() throws IOException {
         List<Endereco> enderecos = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+        List<Cidade> cidades = cidadeDAO.lerCidades();
+
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.UTF_8))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                if (linha.startsWith("CEP")) // Ignora o cabeçalho
+                if (linha.startsWith("ID")) // Ignora o cabeçalho
                     continue;
 
                 String[] dados = linha.split(";");
-                String cep = dados[0];
-                String estado = dados[1];
-                String cidade = dados[2];
-                String bairro = dados[3];
-                String logradouro = dados[4];
-                String num_residencial = dados[5];
+                if (dados.length < 7) {
+                    continue; // Ignora linhas que não têm o número correto de campos
+                }
 
-                Endereco endereco = new Endereco(cep, estado, cidade, bairro, logradouro, num_residencial);
-                enderecos.add(endereco);
+                try {
+                    int id = Integer.parseInt(dados[0]);
+                    String cep = dados[1];
+                    String estado = dados[2];
+                    int cidadeId = Integer.parseInt(dados[3]);
+                    String bairro = dados[4];
+                    String logradouro = dados[5];
+                    String num_residencial = dados[6];
+
+                    Cidade cidade = cidades.stream().filter(c -> c.getCod() == cidadeId).findFirst().orElse(null);
+                    if (cidade != null) {
+                        Endereco endereco = new Endereco(id, cep, estado, cidade.getNome(), bairro, logradouro,
+                                num_residencial);
+                        enderecos.add(endereco);
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println("\nErro ao converter valor: " + e.getMessage());
+                    e.printStackTrace();
+                }
             }
         }
         return enderecos;
     }
 
     public void salvarEnderecos(List<Endereco> enderecos) throws IOException {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
+        try (BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(arquivo), StandardCharsets.UTF_8))) {
             bw.write(header + "\n");
             for (Endereco endereco : enderecos) {
-                bw.write(toStringCsv(endereco) + "\n");
+                Cidade cidade = validarCidade(endereco.getCidade());
+                String enderecoCsv = toStringCsv(endereco, cidade.getCod());
+                bw.write(enderecoCsv + "\n");
             }
         }
     }
 
     public void adicionarEndereco(Endereco endereco) throws IOException {
         List<Endereco> enderecos = lerEnderecos();
-        enderecos.add(endereco);
+        int novoId = enderecos.isEmpty() ? 1 : enderecos.get(enderecos.size() - 1).getId() + 1;
+        Cidade cidade = validarCidade(endereco.getCidade());
+        Endereco novoEndereco = new Endereco(novoId, endereco.getCep(), endereco.getEstado(), cidade.getNome(),
+                endereco.getBairro(), endereco.getLogradouro(), endereco.getNumero_residencial());
+        enderecos.add(novoEndereco);
         salvarEnderecos(enderecos);
     }
 
@@ -56,26 +83,54 @@ public class EnderecoDAO {
         List<Endereco> enderecos = lerEnderecos();
         for (int i = 0; i < enderecos.size(); i++) {
             Endereco endereco = enderecos.get(i);
-            if (endereco.getCep().equals(enderecoAtualizado.getCep())) {
-                enderecos.set(i, enderecoAtualizado);
+            if (endereco.getId() == enderecoAtualizado.getId()) {
+                Cidade cidade = validarCidade(enderecoAtualizado.getCidade());
+                enderecos.set(i,
+                        new Endereco(enderecoAtualizado.getId(), enderecoAtualizado.getCep(),
+                                enderecoAtualizado.getEstado(), cidade.getNome(), enderecoAtualizado.getBairro(),
+                                enderecoAtualizado.getLogradouro(), enderecoAtualizado.getNumero_residencial()));
                 break;
             }
         }
         salvarEnderecos(enderecos);
     }
 
-    public void deletarEndereco(String cep) throws IOException {
+    public void deletarEndereco(int id) throws IOException {
         List<Endereco> enderecos = lerEnderecos();
-        enderecos.removeIf(endereco -> endereco.getCep().equals(cep));
+        enderecos.removeIf(endereco -> endereco.getId() == id);
+        // Reajustar IDs
+        for (int i = 0; i < enderecos.size(); i++) {
+            Endereco endereco = enderecos.get(i);
+            endereco.setId(i + 1);
+        }
         salvarEnderecos(enderecos);
     }
 
-    private String toStringCsv(Endereco endereco) {
-        return endereco.getCep() + ";" + 
-               endereco.getEstado() + ";" + 
-               endereco.getCidade() + ";" + 
-               endereco.getBairro() + ";" + 
-               endereco.getLogradouro() + ";" + 
-               endereco.getNumero_residencial();
+    private Cidade validarCidade(String nomeCidade) throws IOException {
+        List<Cidade> cidades = cidadeDAO.lerCidades();
+        String nomeCidadeNormalizado = normalizarTexto(nomeCidade);
+
+        for (Cidade cidade : cidades) {
+            if (normalizarTexto(cidade.getNome()).equals(nomeCidadeNormalizado)) {
+                return cidade;
+            }
+        }
+        throw new IOException("\nCidade não encontrada: " + nomeCidade);
+    }
+
+    private String normalizarTexto(String texto) {
+        texto = java.text.Normalizer.normalize(texto, java.text.Normalizer.Form.NFD);
+        texto = texto.replaceAll("[^\\p{ASCII}]", "");
+        return texto.toLowerCase();
+    }
+
+    private String toStringCsv(Endereco endereco, int cidadeId) {
+        return endereco.getId() + ";" +
+                endereco.getCep() + ";" +
+                endereco.getEstado() + ";" +
+                cidadeId + ";" +
+                endereco.getBairro() + ";" +
+                endereco.getLogradouro() + ";" +
+                endereco.getNumero_residencial();
     }
 }
