@@ -4,18 +4,19 @@ import br.edu.up.Controller.ClienteController;
 import br.edu.up.Controller.ContaControler;
 import br.edu.up.Modelos.Cliente;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ContaView {
-    private ContaControler contaController;
+    public ContaControler contaController;
     private Scanner scanner;
 
-    public ContaView() {
+    public ContaView() throws IOException{
         contaController = new ContaControler();
         scanner = new Scanner(System.in);
     }
 
-    public void view(ClienteController cliente,String doc) {
+    public void view(ClienteController cliente,String doc) throws IOException {
         int opcao = 0;
         do {
             System.out.println("1. Criar Conta");
@@ -46,7 +47,7 @@ public class ContaView {
         } while (opcao != 4);
     }
 
-    public void criarConta(int cliente) {
+    public void criarConta(int cliente) throws IOException {
         System.out.println("Escolha o tipo de conta:");
         System.out.println("1. Conta Poupança");
         System.out.println("2. Conta Corrente");
