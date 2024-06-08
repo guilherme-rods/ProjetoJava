@@ -23,7 +23,7 @@ public class ContaDAO {
 
         while ((linha = br.readLine()) != null) {
 
-            if (linha.startsWith("id"))
+            if (linha.startsWith("num_conta"))
                 continue;
 
             String[] dados = linha.split(";");
@@ -59,38 +59,36 @@ public class ContaDAO {
         return contas;
     }
 
-    public void salvarRegistros(List<Registro> registros, String headder) throws IOException {
+    public void salvarContas(List<Conta> contas, String headder) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
         bw.write(headder + "\n");
-        for (Registro registro : registros) {
-            bw.write(registro.toString() + "\n");
+        for (Conta conta : contas) {
+            bw.write(conta.ToStringCSV() + "\n");
         }
         bw.close();
     }
 
-    // public void adicionarRegistro(Registro registro, String headder) throws
-    // IOException {
-    // List<Registro> registros = lerRegistros();
-    // registros.add(registro);
-    // salvarRegistros(registros, headder);
-    // }
+    public void adicionarConta(Conta conta, String headder) throws IOException {
+        List<Conta> contas = lerContas();
+        contas.add(conta);
+        salvarContas(contas, headder);
+    }
 
-    // public void atualizarRegistro(Registro registroAtualizado,String headder)
-    // throws IOException {
-    // List<Registro> registros = lerRegistros();
-    // for (Registro registro : registros) {
-    // if (registro.getId() == registroAtualizado.getId()) {
-    // registro.setNome(registroAtualizado.getNome());
-    // registro.setIdade(registroAtualizado.getIdade());
-    // break;
-    // }
-    // }
-    // salvarRegistros(registros, headder);
-    // }
+    public void atualizarConta(Conta contaAtualizada, String headder) throws IOException {
+        List<Conta> contas = lerContas();
+        for (int i = 0; i < contas.size(); i++) {
+            Conta conta = contas.get(i);
+            if (conta.getNum_conta() == contaAtualizada.getNum_conta()) {
+                contas.set(i, contaAtualizada);
+                break;
+            }
+        }
+        salvarContas(contas, headder);
+    }
 
-    // public void deletarRegistro(int id,String headder) throws IOException {
-    // List<Registro> registros = lerRegistros();
-    // registros.removeIf(registro -> registro.getId() == id);
-    // salvarRegistros(registros,headder);
-    // }
+    public void deletarConta(int num_conta, String headder) throws IOException {
+        List<Conta> contas = lerContas();
+        contas.removeIf(conta -> conta.getNum_conta() == num_conta);
+        salvarContas(contas, headder);
+    }
 }

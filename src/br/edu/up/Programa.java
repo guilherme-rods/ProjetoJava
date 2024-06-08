@@ -1,6 +1,6 @@
 package br.edu.up;
 import java.io.IOException;
-import br.edu.up.Views.ClienteView;
+// import br.edu.up.Views.ClienteView;
 import br.edu.up.DAO.*;
 import br.edu.up.Modelos.*;
 

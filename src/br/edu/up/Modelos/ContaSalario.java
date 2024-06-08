@@ -24,7 +24,7 @@ public class ContaSalario extends Conta {
 
     }
     public String ToStringCSV() {
-        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente;
+        return num_conta + ";" + tipo + ";" + saldo + ";" + cliente+";";
     }
 
     @Override
