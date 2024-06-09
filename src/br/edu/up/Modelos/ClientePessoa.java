@@ -1,9 +1,13 @@
-
 import br.edu.up.Modelos.*;
-import br.edu.up.Views.*;
-import br.edu.up.Controller.*;
+
 
 public class ClientePessoa extends Cliente{
+
+  public ClientePessoa(int id, String nome, String telefone) {
+    super(id, nome, telefone);
+  }
   private String? cpf;
+
+  
 
 }
