@@ -3,7 +3,7 @@ package br.edu.up.Modelos;
 public abstract class Financiamento {
 
     protected int id;
-    protected int tipoFinanciamento;
+    public int tipoFinanciamento;
     protected double valor;
     protected int prazo;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FinanciamentoDAO {
     private String arquivo;
-    private String headder = "";
+    private String headder = "id;tipoFinanciamento;valor;prazo;tipoImovel;taxaJurosAnual;tipoVeiculo;anoFabricacao;taxaJurosMensal";
 
     public FinanciamentoDAO(String arquivo) {
         this.arquivo = "./dbbanco/" + arquivo;
@@ -21,26 +21,27 @@ public class FinanciamentoDAO {
         BufferedReader br = new BufferedReader(new FileReader(arquivo));
         String linha;
 
+        // Skip header
+        br.readLine();
+        
         while ((linha = br.readLine()) != null) {
-            if (linha.startsWith("Categoria"))
-                continue;
-
             String[] dados = linha.split(";");
-            int categoria = Integer.parseInt(dados[0]);
-            int numContrato = Integer.parseInt(dados[1]);
-            double valorFinanciamento = Double.parseDouble(dados[2]);
+            int id = Integer.parseInt(dados[0]);
+            int tipoFinanciamento = Integer.parseInt(dados[1]);
+            double valor = Double.parseDouble(dados[2]);
+            int prazo = Integer.parseInt(dados[3]);
 
-            switch (categoria) {
-                case 1:
-                    FinanciamentoImobiliario financiamentoImobiliario = new FinanciamentoImobiliario(categoria, numContrato, valorFinanciamento);
-                    financiamentos.add(financiamentoImobiliario);
-                    break;
-                case 2:
-                    FinanciamentoVeicular financiamentoVeicular = new FinanciamentoVeicular(categoria, numContrato, valorFinanciamento);
-                    financiamentos.add(financiamentoVeicular);
-                    break;
-                default:
-                    break;
+            if (tipoFinanciamento == 1) {
+                String tipoImovel = dados[4];
+                double taxaJurosAnual = Double.parseDouble(dados[5]);
+                FinanciamentoImobiliario financiamentoImobiliario = new FinanciamentoImobiliario(id, valor, prazo, tipoImovel, taxaJurosAnual);
+                financiamentos.add(financiamentoImobiliario);
+            } else if (tipoFinanciamento == 2) {
+                String tipoVeiculo = dados[6];
+                int anoFabricacao = Integer.parseInt(dados[7]);
+                double taxaJurosMensal = Double.parseDouble(dados[8]);
+                FinanciamentoVeicular financiamentoVeicular = new FinanciamentoVeicular(id, valor, prazo, tipoVeiculo, anoFabricacao, taxaJurosMensal);
+                financiamentos.add(financiamentoVeicular);
             }
         }
         br.close();
@@ -51,22 +52,28 @@ public class FinanciamentoDAO {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
         bw.write(headder + "\n");
         for (Financiamento financiamento : financiamentos) {
-            bw.write(financiamento.toString() + "\n");
+            if (financiamento instanceof FinanciamentoImobiliario) {
+                FinanciamentoImobiliario fi = (FinanciamentoImobiliario) financiamento;
+                bw.write(fi.getId() + ";" + fi.tipoFinanciamento + ";" + fi.getValor() + ";" + fi.getPrazo() + ";" + fi.getTipoImovel() + ";" + fi.getTaxaJurosAnual() + ";;;\n");
+            } else if (financiamento instanceof FinanciamentoVeicular) {
+                FinanciamentoVeicular fv = (FinanciamentoVeicular) financiamento;
+                bw.write(fv.getId() + ";" + fv.tipoFinanciamento + ";" + fv.getValor() + ";" + fv.getPrazo() + ";;;" + fv.getTipoVeiculo() + ";" + fv.getAnoFabricacao() + ";" + fv.getTaxaJurosMensal() + "\n");
+            }
         }
         bw.close();
     }
 
-    public void adicionarFinanciamento(Financiamento financiamento, String headder) throws IOException {
+    public void adicionarFinanciamento(Financiamento financiamento) throws IOException {
         List<Financiamento> financiamentos = lerFinanciamentos();
         financiamentos.add(financiamento);
         salvarFinanciamentos(financiamentos);
     }
 
-    public void atualizarFinanciamento(Financiamento financiamentoAtualizado, String headder) throws IOException {
+    public void atualizarFinanciamento(Financiamento financiamentoAtualizado) throws IOException {
         List<Financiamento> financiamentos = lerFinanciamentos();
         for (int i = 0; i < financiamentos.size(); i++) {
             Financiamento financiamento = financiamentos.get(i);
-            if (financiamento.getNumContrato() == financiamentoAtualizado.getNumContrato()) {
+            if (financiamento.getId() == financiamentoAtualizado.getId()) {
                 financiamentos.set(i, financiamentoAtualizado);
                 break;
             }
@@ -74,9 +81,9 @@ public class FinanciamentoDAO {
         salvarFinanciamentos(financiamentos);
     }
 
-    public void deletarFinanciamento(int numContrato, String headder) throws IOException {
+    public void deletarFinanciamento(int id) throws IOException {
         List<Financiamento> financiamentos = lerFinanciamentos();
-        financiamentos.removeIf(financiamento -> financiamento.getNumContrato() == numContrato);
+        financiamentos.removeIf(financiamento -> financiamento.getId() == id);
         salvarFinanciamentos(financiamentos);
     }
 }
