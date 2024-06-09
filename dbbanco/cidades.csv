@@ -1,0 +1,459 @@
+cod_cidade;nome;estado
+1;Aracaju;SE
+2;Belém;PA
+3;Belo Horizonte;MG
+4;Boa Vista;RR
+5;Brasília;DF
+6;Campo Grande;MS
+7;Cuiabá;MT
+8;Curitiba;PR
+9;Florianópolis;SC
+10;Fortaleza;CE
+11;Goiânia;GO
+12;João Pessoa;PB
+13;Macapá;AP
+14;Maceió;AL
+15;Manaus;AM
+16;Natal;RN
+17;Palmas;TO
+18;Porto Alegre;RS
+19;Porto Velho;RO
+20;Recife;PE
+21;Rio Branco;AC
+22;Rio de Janeiro;RJ
+23;Salvador;BA
+24;São Luís;MA
+25;São Paulo;SP
+26;Teresina;PI
+27;Vitória;ES
+28;Abatiá;PR
+29;Adrianópolis;PR
+30;Agudos do Sul;PR
+31;Almirante Tamandaré;PR
+32;Altamira do Paraná;PR
+33;Altônia;PR
+34;Alto Paraná;PR
+35;Alto Piquiri;PR
+36;Alvorada do Sul;PR
+37;Amaporã;PR
+38;Ampére;PR
+39;Anahy;PR
+40;Andirá;PR
+41;Ângulo;PR
+42;Antonina;PR
+43;Antônio Olinto;PR
+44;Apucarana;PR
+45;Arapongas;PR
+46;Arapoti;PR
+47;Arapuã;PR
+48;Araruna;PR
+49;Araucária;PR
+50;Ariranha do Ivaí;PR
+51;Assaí;PR
+52;Assis Chateaubriand;PR
+53;Astorga;PR
+54;Atalaia;PR
+55;Balsa Nova;PR
+56;Bandeirantes;PR
+57;Barbosa Ferraz;PR
+58;Barra do Jacaré;PR
+59;Barracão;PR
+60;Bela Vista da Caroba;PR
+61;Bela Vista do Paraíso;PR
+62;Bituruna;PR
+63;Boa Esperança;PR
+64;Boa Esperança do Iguaçu;PR
+65;Boa Ventura de São Roque;PR
+66;Boa Vista da Aparecida;PR
+67;Bocaiúva do Sul;PR
+68;Bom Jesus do Sul;PR
+69;Bom Sucesso;PR
+70;Bom Sucesso do Sul;PR
+71;Borrazópolis;PR
+72;Braganey;PR
+73;Brasilândia do Sul;PR
+74;Cafeara;PR
+75;Cafelândia;PR
+76;Cafezal do Sul;PR
+77;Califórnia;PR
+78;Cambará;PR
+79;Cambé;PR
+80;Cambira;PR
+81;Campina da Lagoa;PR
+82;Campina do Simão;PR
+83;Campina Grande do Sul;PR
+84;Campo Bonito;PR
+85;Campo do Tenente;PR
+86;Campo Largo;PR
+87;Campo Magro;PR
+88;Campo Mourão;PR
+89;Cândido de Abreu;PR
+90;Candói;PR
+91;Cantagalo;PR
+92;Capanema;PR
+93;Capitão Leônidas Marques;PR
+94;Carambeí;PR
+95;Carlópolis;PR
+96;Cascavel;PR
+97;Castro;PR
+98;Catanduvas;PR
+99;Centenário do Sul;PR
+100;Cerro Azul;PR
+101;Céu Azul;PR
+102;Chopinzinho;PR
+103;Cianorte;PR
+104;Cidade Gaúcha;PR
+105;Clevelândia;PR
+106;Colombo;PR
+107;Colorado;PR
+108;Congonhinhas;PR
+109;Conselheiro Mairinck;PR
+110;Contenda;PR
+111;Corbélia;PR
+112;Cornélio Procópio;PR
+113;Coronel Domingos Soares;PR
+114;Coronel Vivida;PR
+115;Corumbataí do Sul;PR
+116;Cruz Machado;PR
+117;Cruzeiro do Iguaçu;PR
+118;Cruzeiro do Oeste;PR
+119;Cruzeiro do Sul;PR
+120;Cruzmaltina;PR
+121;Curitiba;PR
+122;Curiúva;PR
+123;Diamante do Norte;PR
+124;Diamante do Sul;PR
+125;Diamante D'Oeste;PR
+126;Dois Vizinhos;PR
+127;Douradina;PR
+128;Doutor Camargo;PR
+129;Doutor Ulysses;PR
+130;Adamantina;SP
+131;Adolfo;SP
+132;Aguaí;SP
+133;Águas da Prata;SP
+134;Águas de Lindóia;SP
+135;Águas de Santa Bárbara;SP
+136;Águas de São Pedro;SP
+137;Agudos;SP
+138;Alambari;SP
+139;Alfredo Marcondes;SP
+140;Altair;SP
+141;Altinópolis;SP
+142;Alto Alegre;SP
+143;Alumínio;SP
+144;Álvares Florence;SP
+145;Álvares Machado;SP
+146;Álvaro de Carvalho;SP
+147;Alvinlândia;SP
+148;Americana;SP
+149;Américo Brasiliense;SP
+150;Américo de Campos;SP
+151;Amparo;SP
+152;Analândia;SP
+153;Andradina;SP
+154;Angatuba;SP
+155;Anhembi;SP
+156;Anhumas;SP
+157;Aparecida;SP
+158;Aparecida d'Oeste;SP
+159;Apiaí;SP
+160;Araçariguama;SP
+161;Araçatuba;SP
+162;Araçoiaba da Serra;SP
+163;Aramina;SP
+164;Arandu;SP
+165;Arapeí;SP
+166;Araraquara;SP
+167;Araras;SP
+168;Arco-Íris;SP
+169;Arealva;SP
+170;Areias;SP
+171;Areiópolis;SP
+172;Ariranha;SP
+173;Artur Nogueira;SP
+174;Arujá;SP
+175;Aspásia;SP
+176;Assis;SP
+177;Atibaia;SP
+178;Auriflama;SP
+179;Avaí;SP
+180;Avanhandava;SP
+181;Avaré;SP
+182;Bady Bassitt;SP
+183;Balbinos;SP
+184;Bálsamo;SP
+185;Bananal;SP
+186;Barão de Antonina;SP
+187;Barbosa;SP
+188;Bariri;SP
+189;Barra Bonita;SP
+190;Barra do Chapéu;SP
+191;Barra do Turvo;SP
+192;Barretos;SP
+193;Barrinha;SP
+194;Barueri;SP
+195;Bastos;SP
+196;Batatais;SP
+197;Bauru;SP
+198;Bebedouro;SP
+199;Bento de Abreu;SP
+200;Bernardino de Campos;SP
+201;Bertioga;SP
+202;Bilac;SP
+203;Birigui;SP
+204;Biritiba Mirim;SP
+205;Boa Esperança do Sul;SP
+206;Bocaina;SP
+207;Bofete;SP
+208;Boituva;SP
+209;Bom Jesus dos Perdões;SP
+210;Bom Sucesso de Itararé;SP
+211;Borá;SP
+212;Boracéia;SP
+213;Borborema;SP
+214;Borebi;SP
+215;Botucatu;SP
+216;Bragança Paulista;SP
+217;Braúna;SP
+218;Brejo Alegre;SP
+219;Brodowski;SP
+220;Brotas;SP
+221;Buri;SP
+222;Buritama;SP
+223;Buritizal;SP
+224;Cabrália Paulista;SP
+225;Cabreúva;SP
+226;Caçapava;SP
+227;Cachoeira Paulista;SP
+228;Caconde;SP
+229;Cafelândia;SP
+230;Caiabu;SP
+231;Caieiras;SP
+232;Caiuá;SP
+233;Cajamar;SP
+234;Cajati;SP
+235;Angra dos Reis;RJ
+236;Aperibé;RJ
+237;Araruama;RJ
+238;Areal;RJ
+239;Armação dos Búzios;RJ
+240;Arraial do Cabo;RJ
+241;Barra do Piraí;RJ
+242;Barra Mansa;RJ
+243;Belford Roxo;RJ
+244;Bom Jardim;RJ
+245;Bom Jesus do Itabapoana;RJ
+246;Cabo Frio;RJ
+247;Cachoeiras de Macacu;RJ
+248;Cambuci;RJ
+249;Campos dos Goytacazes;RJ
+250;Cantagalo;RJ
+251;Carapebus;RJ
+252;Cardoso Moreira;RJ
+253;Carmo;RJ
+254;Casimiro de Abreu;RJ
+255;Comendador Levy Gasparian;RJ
+256;Conceição de Macabu;RJ
+257;Cordeiro;RJ
+258;Duas Barras;RJ
+259;Duque de Caxias;RJ
+260;Engenheiro Paulo de Frontin;RJ
+261;Guapimirim;RJ
+262;Iguaba Grande;RJ
+263;Itaboraí;RJ
+264;Itaguaí;RJ
+265;Italva;RJ
+266;Itaocara;RJ
+267;Itaperuna;RJ
+268;Itatiaia;RJ
+269;Japeri;RJ
+270;Laje do Muriaé;RJ
+271;Macaé;RJ
+272;Macuco;RJ
+273;Magé;RJ
+274;Mangaratiba;RJ
+275;Maricá;RJ
+276;Mendes;RJ
+277;Mesquita;RJ
+278;Miguel Pereira;RJ
+279;Miracema;RJ
+280;Natividade;RJ
+281;Nilópolis;RJ
+282;Niterói;RJ
+283;Nova Friburgo;RJ
+284;Nova Iguaçu;RJ
+285;Paracambi;RJ
+286;Paraíba do Sul;RJ
+287;Paraty;RJ
+288;Paty do Alferes;RJ
+289;Petrópolis;RJ
+290;Pinheiral;RJ
+291;Piraí;RJ
+292;Porciúncula;RJ
+293;Porto Real;RJ
+294;Quatis;RJ
+295;Queimados;RJ
+296;Quissamã;RJ
+297;Resende;RJ
+298;Rio Bonito;RJ
+299;Rio Claro;RJ
+300;Rio das Flores;RJ
+301;Rio das Ostras;RJ
+302;Rio de Janeiro;RJ
+303;Santa Maria Madalena;RJ
+304;Santo Antônio de Pádua;RJ
+305;São Fidélis;RJ
+306;São Francisco de Itabapoana;RJ
+307;São Gonçalo;RJ
+308;São João da Barra;RJ
+309;São João de Meriti;RJ
+310;São José de Ubá;RJ
+311;São José do Vale do Rio Preto;RJ
+312;São Pedro da Aldeia;RJ
+313;São Sebastião do Alto;RJ
+314;Sapucaia;RJ
+315;Saquarema;RJ
+316;Seropédica;RJ
+317;Silva Jardim;RJ
+318;Sumidouro;RJ
+319;Tanguá;RJ
+320;Teresópolis;RJ
+321;Trajano de Moraes;RJ
+322;Três Rios;RJ
+323;Valença;RJ
+324;Varre-Sai;RJ
+325;Vassouras;RJ
+326;Volta Redonda;RJ
+327;Afonso Cláudio;RJ
+328;Água Doce do Norte;RJ
+329;Águia Branca;RJ
+330;Alegre;RJ
+331;Alfredo Chaves;RJ
+332;Anchieta;RJ
+333;Apiacá;RJ
+334;Aracruz;RJ
+335;Atílio Vivácqua;RJ
+336;Baixo Guandu;RJ
+337;Barra de São Francisco;RJ
+338;Boa Esperança;RJ
+339;Bom Jesus do Norte;RJ
+340;Agudo;RS
+341;Ajuricaba;RS
+342;Alecrim;RS
+343;Alegrete;RS
+344;Alegria;RS
+345;Almirante Tamandaré do Sul;RS
+346;Alpestre;RS
+347;Alto Alegre;RS
+348;Alto Feliz;RS
+349;Alvorada;RS
+350;Amaral Ferrador;RS
+351;Ametista do Sul;RS
+352;André da Rocha;RS
+353;Anta Gorda;RS
+354;Antônio Prado;RS
+355;Arambaré;RS
+356;Araricá;RS
+357;Aratiba;RS
+358;Arroio do Meio;RS
+359;Arroio do Padre;RS
+360;Arroio do Sal;RS
+361;Arroio do Tigre;RS
+362;Arroio dos Ratos;RS
+363;Arroio Grande;RS
+364;Arvorezinha;RS
+365;Augusto Pestana;RS
+366;Áurea;RS
+367;Bagé;RS
+368;Balneário Pinhal;RS
+369;Barão;RS
+370;Barão de Cotegipe;RS
+371;Barão do Triunfo;RS
+372;Barra do Guarita;RS
+373;Barra do Quaraí;RS
+374;Barra do Ribeiro;RS
+375;Barra do Rio Azul;RS
+376;Barra Funda;RS
+377;Barracão;RS
+378;Barros Cassal;RS
+379;Benjamin Constant do Sul;RS
+380;Bento Gonçalves;RS
+381;Boa Vista das Missões;RS
+382;Boa Vista do Buricá;RS
+383;Boa Vista do Cadeado;RS
+384;Boa Vista do Incra;RS
+385;Boa Vista do Sul;RS
+386;Bom Jesus;RS
+387;Bom Princípio;RS
+388;Bom Progresso;RS
+389;Bom Retiro do Sul;RS
+390;Boqueirão do Leão;RS
+391;Bossoroca;RS
+392;Bozano;RS
+393;Braga;RS
+394;Brochier;RS
+395;Butiá;RS
+396;Caçapava do Sul;RS
+397;Cacequi;RS
+398;Cachoeira do Sul;RS
+399;Cachoeirinha;RS
+400;Cacique Doble;RS
+401;Caibaté;RS
+402;Caiçara;RS
+403;Camaquã;RS
+404;Camargo;RS
+405;Cambará do Sul;RS
+406;Campestre da Serra;RS
+407;Campina das Missões;RS
+408;Campinas do Sul;RS
+409;Campo Bom;RS
+410;Campo Novo;RS
+411;Campo Santo;RS
+412;Campo Seco;RS
+413;Campo Novo do Parecis;RS
+414;Candelária;RS
+415;Cândido Godói;RS
+416;Candiota;RS
+417;Canela;RS
+418;Canguçu;RS
+419;Canoas;RS
+420;Canudos do Vale;RS
+421;Capão Bonito do Sul;RS
+422;Capão da Canoa;RS
+423;Capão do Cipó;RS
+424;Capão do Leão;RS
+425;Capela de Santana;RS
+426;Capitão;RS
+427;Capivari do Sul;RS
+428;Caraá;RS
+429;Carazinho;RS
+430;Carlos Barbosa;RS
+431;Carlos Gomes;RS
+432;Casca;RS
+433;Caseiros;RS
+434;Catuípe;RS
+435;Caxias do Sul;RS
+436;Centenário;RS
+437;Cerrito;RS
+438;Cerro Branco;RS
+439;Cerro Grande;RS
+440;Cerro Grande do Sul;RS
+441;Cerro Largo;RS
+442;Chapada;RS
+443;Charqueadas;RS
+444;Charrua;RS
+445;Chiapetta;RS
+446;Chuí;RS
+447;Chuvisca;RS
+448;Cidreira;RS
+449;Ciríaco;RS
+450;Colinas;RS
+451;Colorado;RS
+452;Condor;RS
+453;Constantina;RS
+454;Coqueiro Baixo;RS
+455;Coqueiros do Sul;RS
+456;Coronel Barros;RS
+457;Coronel Bicaco;RS
+458;Pinhais;PR

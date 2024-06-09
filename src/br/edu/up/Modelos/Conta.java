@@ -4,7 +4,24 @@ public abstract class Conta {
 
     protected int num_conta;
     protected double  saldo;
-    protected Cliente cliente;
+    protected int cliente;
+    protected int tipo;
+    protected boolean ativa;
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
+    }
+
+    public Conta(int num_conta, double saldo, int cliente) {
+        this.num_conta = num_conta;
+        this.saldo = saldo;
+        this.cliente = cliente;
+        
+    }
 
     public int getNum_conta() {
         return num_conta;
@@ -15,19 +32,20 @@ public abstract class Conta {
     }
 
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
-    public abstract void sacar(double valor);
-    public abstract void depositar(double valor);
+    public abstract String movimentar(double valor, boolean entrada);
 
     @Override
     public String toString() {
         return "Conta [num_conta=" + num_conta +
         ", cliente=" + cliente + "]";
     }
+    public abstract String close();
+    public abstract String ToStringCSV();
 }

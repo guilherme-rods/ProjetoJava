@@ -1,22 +1,30 @@
 package br.edu.up.Modelos;
 
 public class Endereco {
-
+    private int id;
     private String cep;
     private String estado;
     private String cidade;
     private String bairro;
     private String logradouro;
-    private String num_residencial;
+    private String numero_residencial;
 
-    public Endereco(String cep, String estado, String cidade, String bairro, String logradouro,
-            String num_residencial) {
+    public Endereco(int id, String cep, String estado, String cidade, String bairro, String logradouro, String numero_residencial) {
+        this.id = id;
         this.cep = cep;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
         this.logradouro = logradouro;
-        this.num_residencial = num_residencial;
+        this.numero_residencial = numero_residencial;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCep() {
@@ -60,20 +68,23 @@ public class Endereco {
     }
 
     public String getNumero_residencial() {
-        return num_residencial;
+        return numero_residencial;
     }
 
-    public void setNumero_residencial(String num_residencial) {
-        this.num_residencial = num_residencial;
+    public void setNumero_residencial(String numero_residencial) {
+        this.numero_residencial = numero_residencial;
     }
 
     @Override
     public String toString() {
-        return "Endereco [cep=" + cep + 
-        ", estado=" + estado + 
-        ", cidade=" + cidade + 
-        ", bairro=" + bairro + 
-        ", logradouro=" + logradouro + 
-        ", num_residencial=" + num_residencial + "]";
+        return "\n--->{" +
+                "id=" + id +
+                ", cep='" + cep + '\'' +
+                ", estado='" + estado + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", numero_residencial='" + numero_residencial + '\'' +
+                "}\n";
     }
 }

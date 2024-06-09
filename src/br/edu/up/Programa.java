@@ -1,18 +1,15 @@
 package br.edu.up;
 
-import br.edu.up.Views.ClienteView;
+import br.edu.up.Views.MenuView;
+import java.io.IOException;
 
 public class Programa {
     public static void main(String[] args) {
-        var view = new ClienteView();
-
-        view.AddCliente();
-    }
-
-    public static void ShowMenu() {
-        System.out.println("--- Menu ---");
-        System.out.println("1) Adicionar usuário");
-
-        System.out.println();
+        try {
+            MenuView menuView = new MenuView();
+            menuView.exibirMenu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
