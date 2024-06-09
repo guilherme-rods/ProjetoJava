@@ -2,12 +2,11 @@ package br.edu.up.Controller;
 
 import br.edu.up.Modelos.Cliente;
 import br.edu.up.Modelos.Endereco;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteController {
-    private List<Cliente> _listaClientes;
+    private final List<Cliente> _listaClientes;
     private int qtdJaAdd = 0;
     public ClienteController(){
         _listaClientes = new ArrayList<>();

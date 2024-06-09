@@ -2,13 +2,11 @@ package br.edu.up.Controller;
 import br.edu.up.DAO.ContaDAO;
 import br.edu.up.Modelos.*;
 import java.io.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 public class ContaControler {
-    private ContaDAO _dbConta;
-    private List<Conta> contas;
+    private final ContaDAO _dbConta;
+    private final List<Conta> contas;
 
     public ContaControler() throws IOException{
         _dbConta = new ContaDAO("contas.csv");

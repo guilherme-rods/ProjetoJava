@@ -27,14 +27,14 @@ public class MenuView {
             scanner.nextLine();  // Consome a nova linha
 
             switch (opcao) {
-                // case 1:
-                //     ClienteView clienteView = new ClienteView();
-                //     clienteView.exibirMenu();
-                //     break;
-                // case 2:
-                //     ContaView contaView = new ContaView();
-                //     contaView.exibirMenu();
-                //     break;
+                case 1:
+                    ClienteView clienteView = new ClienteView();
+                    clienteView.exibirMenu();
+                    break;
+                case 2:
+                    ContaView contaView = new ContaView();
+                    contaView.exibirMenu();
+                    break;
                 case 3:
                     EnderecoView enderecoView = new EnderecoView();
                     EnderecoController enderecoController = new EnderecoController("enderecos.csv", "cidades.csv", enderecoView);
