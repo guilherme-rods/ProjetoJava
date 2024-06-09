@@ -1,8 +1,6 @@
 package br.edu.up.Controller;
 
 import br.edu.up.Modelos.Financiamento;
-import br.edu.up.Modelos.FinanciamentoImobiliario;
-import br.edu.up.Modelos.FinanciamentoVeicular;
 
 import java.util.ArrayList;
 import java.util.List;
