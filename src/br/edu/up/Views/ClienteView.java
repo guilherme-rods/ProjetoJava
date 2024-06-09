@@ -140,7 +140,7 @@ public class ClienteView {
                 case 5:
                     System.out.println("Digite o telefone do representante");
                     assert cliente instanceof ClienteEmpresa;
-                    ((ClienteEmpresa) cliente).setTelefone_representante(_scanner.nextLine());
+                    ((ClienteEmpresa) cliente).setTelefoneRepresentante(_scanner.nextLine());
                     break;
                 default:
                     throw new IllegalArgumentException("Opção escolhida inválida!");
