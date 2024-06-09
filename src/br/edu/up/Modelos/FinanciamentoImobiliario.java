@@ -2,34 +2,35 @@ package br.edu.up.Modelos;
 
 public class FinanciamentoImobiliario extends Financiamento {
 
-    private int NumContratoImobiliario;
-    private double valorFinanciamentoImobiliario;
+    private String tipoImovel;
+    private double taxaJurosAnual;
 
-    public FinanciamentoImobiliario(int categoria, int numContratoImobiliario, double valorFinanciamentoImobiliario) {
-        super(categoria);
-        NumContratoImobiliario = numContratoImobiliario;
-        this.valorFinanciamentoImobiliario = valorFinanciamentoImobiliario;
+    public FinanciamentoImobiliario(int id, double valor, int prazo, String tipoImovel, double taxaJurosAnual) {
+        super(id, valor, prazo);
+        this.tipoImovel = tipoImovel;
+        this.taxaJurosAnual = taxaJurosAnual;
+        this.tipoFinanciamento = 1;
     }
 
-    public int getNumContrato() {
-        return NumContratoImobiliario;
+    public String getTipoImovel() {
+        return tipoImovel;
     }
 
-    public void setNumContratoImobiliario(int numContratoImobiliario) {
-        NumContratoImobiliario = numContratoImobiliario;
+    public void setTipoImovel(String tipoImovel) {
+        this.tipoImovel = tipoImovel;
     }
 
-    public double getValorFinanciamentoImobiliario() {
-        return valorFinanciamentoImobiliario;
+    public double getTaxaJurosAnual() {
+        return taxaJurosAnual;
     }
 
-    public void setValorFinanciamentoImobiliario(double valorFinanciamentoImobiliario) {
-        this.valorFinanciamentoImobiliario = valorFinanciamentoImobiliario;
+    public void setTaxaJurosAnual(double taxaJurosAnual) {
+        this.taxaJurosAnual = taxaJurosAnual;
     }
 
     @Override
     public String toString() {
-        return "FinanciamentoImobiliario [Categoria=" + Categoria + ", NumContratoImobiliario=" + NumContratoImobiliario
-                + ", valorFinanciamentoImobiliario=" + valorFinanciamentoImobiliario + "]";
+        return "FinanciamentoImobiliario [id=" + id + ", tipoImovel=" + tipoImovel + ", valor=" + valor + ", prazo="
+                + prazo + ", taxaJurosAnual=" + taxaJurosAnual + "]";
     }
 }

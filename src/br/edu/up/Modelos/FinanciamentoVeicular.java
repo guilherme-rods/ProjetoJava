@@ -2,34 +2,48 @@ package br.edu.up.Modelos;
 
 public class FinanciamentoVeicular extends Financiamento{
 
-    private int NumContratoVeicular;
-    private double valorFinanciamentoVeicular;
+    private String tipoVeiculo;
+    private int anoFabricacao;
+    private double taxaJurosMensal;
 
-    public FinanciamentoVeicular(int categoria, int numContratoVeicular, double valorFinanciamentoVeicular) {
-        super(categoria);
-        NumContratoVeicular = numContratoVeicular;
-        this.valorFinanciamentoVeicular = valorFinanciamentoVeicular;
+    public FinanciamentoVeicular(int id, double valor, int prazo, String tipoVeiculo, int anoFabricacao,
+            double taxaJurosMensal) {
+        super(id, valor, prazo);
+        this.tipoVeiculo = tipoVeiculo;
+        this.anoFabricacao = anoFabricacao;
+        this.taxaJurosMensal = taxaJurosMensal;
+        this.tipoFinanciamento = 2;
     }
 
-    public int getNumContrato() {
-        return NumContratoVeicular;
+    public String getTipoVeiculo() {
+        return tipoVeiculo;
     }
 
-    public void setNumContratoVeicular(int numContratoVeicular) {
-        NumContratoVeicular = numContratoVeicular;
+    public void setTipoVeiculo(String tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
     }
 
-    public double getValorFinanciamentoVeicular() {
-        return valorFinanciamentoVeicular;
+    public int getAnoFabricacao() {
+        return anoFabricacao;
     }
 
-    public void setValorFinanciamentoVeicular(double valorFinanciamentoVeicular) {
-        this.valorFinanciamentoVeicular = valorFinanciamentoVeicular;
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
+    }
+
+    public double getTaxaJurosMensal() {
+        return taxaJurosMensal;
+    }
+
+    public void setTaxaJurosMensal(double taxaJurosMensal) {
+        this.taxaJurosMensal = taxaJurosMensal;
     }
 
     @Override
     public String toString() {
-        return "FinanciamentoVeicular [Categoria=" + Categoria + ", NumContratoVeicular=" + NumContratoVeicular
-                + ", valorFinanciamentoVeicular=" + valorFinanciamentoVeicular + "]";
-    } 
+        return "FinanciamentoVeicular [id=" + id + ", tipoVeiculo=" + tipoVeiculo + ", valor=" + valor
+                + ", anoFabricacao=" + anoFabricacao + ", prazo=" + prazo + ", taxaJurosMensal=" + taxaJurosMensal
+                + "]";
+    }
+
 }

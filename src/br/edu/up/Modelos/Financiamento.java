@@ -2,22 +2,38 @@ package br.edu.up.Modelos;
 
 public abstract class Financiamento {
 
-    protected int Categoria;
+    protected int id;
+    protected int tipoFinanciamento;
+    protected double valor;
+    protected int prazo;
 
-    public Financiamento(int categoria) {
-        Categoria = categoria;
+    public Financiamento(int id, double valor, int prazo) {
+        this.id = id;
+        this.valor = valor;
+        this.prazo = prazo;
     }
 
-    public int getCategoria() {
-        return Categoria;
+    public int getId() {
+        return id;
     }
 
-    public void setCategoria(int categoria) {
-        Categoria = categoria;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public abstract int getNumContrato(); 
-    
-    
-    
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public int getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(int prazo) {
+        this.prazo = prazo;
+    }
 }
