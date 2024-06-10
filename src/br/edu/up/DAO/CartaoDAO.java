@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CartaoDAO {
     private String arquivo;
+    private final String header = "idCartao;tipoCartao;num_cartao;num_conta;validade;bandeira;limite;saldoUtilizado;saldo";
 
     public CartaoDAO(String arquivo) {
         this.arquivo = "./dbbanco/" + arquivo;
@@ -51,7 +52,7 @@ public class CartaoDAO {
 
     public void salvarCartoes(List<Cartao> cartoes) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
-        bw.write("idCartao;tipoCartao;num_cartao;num_conta;validade;bandeira;limite;saldoUtilizado;saldo\n");
+        bw.write(header + "\n");
         for (Cartao cartao : cartoes) {
             bw.write(cartaoToStringCSV(cartao) + "\n");
         }

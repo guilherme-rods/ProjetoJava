@@ -9,4 +9,4 @@ Projeto de desenvolvimento em Java - 1º Sem 2024
 |        Jean         | 33176787 |
 | João Pedro Capoani  | 32583117 |
 |   Lucas Levorato    | 34565329 |
-|    Luis Padilha     |    -     |
+|    Luis Padilha     |         |
