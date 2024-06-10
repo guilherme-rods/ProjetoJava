@@ -1,9 +1,7 @@
 package br.edu.up.Views;
 
-import br.edu.up.Controller.*;
 import br.edu.up.Controller.ContaControler;
 import br.edu.up.Controller.EnderecoController;
-import br.edu.up.Modelos.Conta;
 import br.edu.up.Modelos.Endereco;
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +16,6 @@ public class EnderecoView {
     public EnderecoView() throws IOException {
         this.scanner = new Scanner(System.in, "UTF-8");
         this.clienteController = new ContaControler();
-        this.enderecoController = new EnderecoController();
     }
 
     public void setController(EnderecoController controller) {
@@ -114,7 +111,9 @@ public class EnderecoView {
         scanner.nextLine();
         int id = scanner.nextInt();
 
-        return new Endereco(id, cep, estado, cidade, bairro, logradouro, numero);
+        Boolean status = true;
+
+        return new Endereco(id, cep, estado, cidade, bairro, logradouro, numero, status);
     }
 
     public int obterIdEndereco() {
