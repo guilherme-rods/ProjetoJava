@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FinanciamentoDAO {
     private String arquivo;
-    private String headder = "id;tipoFinanciamento;valor;prazo;tipoImovel;taxaJurosAnual;tipoVeiculo;anoFabricacao;taxaJurosMensal";
+    private String header = "id;tipoFinanciamento;valor;prazo;tipoImovel;taxaJurosAnual;tipoVeiculo;anoFabricacao;taxaJurosMensal";
 
     public FinanciamentoDAO(String arquivo) {
         this.arquivo = "./dbbanco/" + arquivo;
@@ -21,7 +21,6 @@ public class FinanciamentoDAO {
         BufferedReader br = new BufferedReader(new FileReader(arquivo));
         String linha;
 
-        // Skip header
         br.readLine();
         
         while ((linha = br.readLine()) != null) {
@@ -50,7 +49,7 @@ public class FinanciamentoDAO {
 
     public void salvarFinanciamentos(List<Financiamento> financiamentos) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
-        bw.write(headder + "\n");
+        bw.write(header + "\n");
         for (Financiamento financiamento : financiamentos) {
             if (financiamento instanceof FinanciamentoImobiliario) {
                 FinanciamentoImobiliario fi = (FinanciamentoImobiliario) financiamento;

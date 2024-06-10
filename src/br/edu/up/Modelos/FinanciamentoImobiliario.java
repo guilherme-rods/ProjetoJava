@@ -33,4 +33,8 @@ public class FinanciamentoImobiliario extends Financiamento {
         return "FinanciamentoImobiliario [id=" + id + ", tipoImovel=" + tipoImovel + ", valor=" + valor + ", prazo="
                 + prazo + ", taxaJurosAnual=" + taxaJurosAnual + "]";
     }
+
+    public String ToStringCSV() {
+        return id + ";" + tipoFinanciamento + ";" + valor + ";" + prazo + ";" + tipoImovel + ";" + taxaJurosAnual + ";;;";
+    }
 }

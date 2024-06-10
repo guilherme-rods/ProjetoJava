@@ -46,4 +46,8 @@ public class FinanciamentoVeicular extends Financiamento{
                 + "]";
     }
 
+    public String ToStringCSV() {
+        return id + ";" + tipoFinanciamento + ";" + valor + ";" + prazo + ";;;" + tipoVeiculo + ";" + anoFabricacao + ";" + taxaJurosMensal;
+    }
+
 }
