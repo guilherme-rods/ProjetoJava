@@ -8,5 +8,5 @@ Projeto de desenvolvimento em Java - 1º Sem 2024
 | Guilherme Rodrigues | 36271195 |
 |        Jean         | 33176787 |
 | João Pedro Capoani  | 32583117 |
-|   Lucas Levorato    |    -     |
+|   Lucas Levorato    | 34565329 |
 |    Luis Padilha     |    -     |

@@ -1,4 +1,5 @@
 package br.edu.up.Views;
+
 import br.edu.up.Controller.*;
 import br.edu.up.Controller.ContaControler;
 import br.edu.up.Controller.EnderecoController;
@@ -14,9 +15,10 @@ public class EnderecoView {
     private Scanner scanner;
     private EnderecoController enderecoController;
 
-    public EnderecoView()throws IOException {
+    public EnderecoView() throws IOException {
         this.scanner = new Scanner(System.in, "UTF-8");
         this.clienteController = new ContaControler();
+        this.enderecoController = new EnderecoController();
     }
 
     public void setController(EnderecoController controller) {
@@ -36,12 +38,12 @@ public class EnderecoView {
             int opcao = scanner.nextInt();
             scanner.nextLine();
 
-            switch(opcao) {
+            switch (opcao) {
                 case 1:
                     listarEnderecos();
                     break;
                 case 2:
-                    adicionarEndereco(1);
+                    adicionarEndereco();
                     break;
                 case 3:
                     atualizarEndereco();
@@ -62,10 +64,12 @@ public class EnderecoView {
         enderecoController.listarEnderecos();
     }
 
-    public void adicionarEndereco(int id) throws IOException {
+    public int adicionarEndereco() throws IOException {
         Endereco endereco = obterDadosEndereco();
         enderecoController.adicionarEndereco(endereco);
-        // clienteController.setEndereco(id);
+
+        return endereco.getId();
+
     }
 
     public void atualizarEndereco() throws IOException {
@@ -89,30 +93,34 @@ public class EnderecoView {
     public Endereco obterDadosEndereco() {
         System.out.print("\nInforme o CEP: ");
         String cep = scanner.nextLine().trim();
-        
+
         System.out.print("Informe o Estado: ");
         String estado = scanner.nextLine().trim();
-        
+
         System.out.print("Informe a Cidade: ");
         String cidade = scanner.nextLine().trim();
-        
+
         System.out.print("Informe o Bairro: ");
         String bairro = scanner.nextLine().trim();
-        
+
         System.out.print("Informe o Logradouro: ");
         String logradouro = scanner.nextLine().trim();
-        
+
         System.out.print("Informe o Número Residencial: ");
         String numero = scanner.nextLine().trim();
         System.out.print("");
 
-        return new Endereco(0, cep, estado, cidade, bairro, logradouro, numero);
+        System.out.println("Qual id?");
+        scanner.nextLine();
+        int id = scanner.nextInt();
+
+        return new Endereco(id, cep, estado, cidade, bairro, logradouro, numero);
     }
 
     public int obterIdEndereco() {
         System.out.print("\nInforme o ID do Endereço: ");
         int id = scanner.nextInt();
-        scanner.nextLine();  // Consome a nova linha
+        scanner.nextLine(); // Consome a nova linha
         return id;
     }
 

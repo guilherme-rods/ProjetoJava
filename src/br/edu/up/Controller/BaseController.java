@@ -14,7 +14,7 @@ public class BaseController {
     public BaseController(String caminhoArquivoCartao, String caminhoArquivoCliente, String caminhoArquivoCidade,
                           String caminhoArquivoEndereco, String caminhoArquivoConta, String caminhoArquivoFinanciamento) {
         this.cartaoDAO = new CartaoDAO(caminhoArquivoCartao);
-        this.clienteDAO = new ClienteDAO();
+        this.clienteDAO = new ClienteDAO("clientes.csv");
         this.cidadeDAO = new CidadeDAO("cidades.csv");
         this.enderecoDAO = new EnderecoDAO(caminhoArquivoEndereco, this.cidadeDAO);
         this.contaDAO = new ContaDAO(caminhoArquivoConta);
