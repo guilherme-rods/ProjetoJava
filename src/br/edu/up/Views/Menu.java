@@ -35,9 +35,9 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    clienteView.AddCliente();
-                    enderecoView.adicionarEndereco(1);// id do cliente criado a cima
-                    contaView.criarConta(1);// id do cliente a cima
+                    int idCliente = clienteView.AddCliente();
+                    enderecoView.adicionarEndereco(idCliente);// id do cliente criado a cima
+                    contaView.criarConta(idCliente);// id do cliente a cima
                     // cartaoview  id da conta no cartão
                     break;
                 case 2:

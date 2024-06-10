@@ -16,7 +16,7 @@ public class ClienteView {
         _scanner = new Scanner(System.in);
     }
 
-    public void AddCliente() {
+    public int AddCliente() {
         System.out.println("Digite os dados do cliente");
         System.out.println("Nome");
         var nome = _scanner.nextLine();
@@ -93,6 +93,7 @@ public class ClienteView {
         }
 
         System.out.println("Cliente adicionado");
+        return position;
     }
 
     public void Edit() {
