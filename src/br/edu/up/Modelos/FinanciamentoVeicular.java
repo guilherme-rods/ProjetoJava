@@ -7,8 +7,8 @@ public class FinanciamentoVeicular extends Financiamento{
     private double taxaJurosMensal;
 
     public FinanciamentoVeicular(int id, double valor, int prazo, String tipoVeiculo, int anoFabricacao,
-            double taxaJurosMensal) {
-        super(id, valor, prazo);
+            double taxaJurosMensal,int idCliente) {
+        super(id, valor, prazo,idCliente);
         this.tipoVeiculo = tipoVeiculo;
         this.anoFabricacao = anoFabricacao;
         this.taxaJurosMensal = taxaJurosMensal;

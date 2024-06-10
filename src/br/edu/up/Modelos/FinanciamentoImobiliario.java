@@ -5,8 +5,8 @@ public class FinanciamentoImobiliario extends Financiamento {
     private String tipoImovel;
     private double taxaJurosAnual;
 
-    public FinanciamentoImobiliario(int id, double valor, int prazo, String tipoImovel, double taxaJurosAnual) {
-        super(id, valor, prazo);
+    public FinanciamentoImobiliario(int id, double valor, int prazo, String tipoImovel, double taxaJurosAnual,int idCliente) {
+        super(id, valor, prazo, idCliente);
         this.tipoImovel = tipoImovel;
         this.taxaJurosAnual = taxaJurosAnual;
         this.tipoFinanciamento = 1;

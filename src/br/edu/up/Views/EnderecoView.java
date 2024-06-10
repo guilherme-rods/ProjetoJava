@@ -65,7 +65,7 @@ public class EnderecoView {
     public void adicionarEndereco(int id) throws IOException {
         Endereco endereco = obterDadosEndereco();
         enderecoController.adicionarEndereco(endereco);
-        clienteController.setEndereco(id);
+        // clienteController.setEndereco(id);
     }
 
     public void atualizarEndereco() throws IOException {

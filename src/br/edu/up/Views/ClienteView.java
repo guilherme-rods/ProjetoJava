@@ -152,4 +152,8 @@ public class ClienteView {
             System.err.println(e.getMessage());
         }
     }
+
+    public int buscarIdCliente(String doc) {       
+        return  _controller.Get(doc).getId();
+    }   
 }

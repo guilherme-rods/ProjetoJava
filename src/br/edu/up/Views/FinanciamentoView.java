@@ -20,11 +20,9 @@ public class FinanciamentoView {
         int opcao;
         do {
             System.out.println("Menu de Financiamentos:");
-            System.out.println("1. Adicionar Financiamento Imobiliário");
-            System.out.println("2. Adicionar Financiamento Veicular");
-            System.out.println("3. Visualizar Prazo Total");
-            System.out.println("4. Visualizar Parcelas Pagas");
-            System.out.println("5. Visualizar Saldo a Pagar");
+            System.out.println("1. Visualizar Prazo Total");
+            System.out.println("2. Visualizar Parcelas Pagas");
+            System.out.println("3. Visualizar Saldo a Pagar");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -32,18 +30,12 @@ public class FinanciamentoView {
 
             switch (opcao) {
                 case 1:
-                    adicionarFinanciamentoImobiliario();
-                    break;
-                case 2:
-                    adicionarFinanciamentoVeicular();
-                    break;
-                case 3:
                     visualizarPrazoTotal();
                     break;
-                case 4:
+                case 2:
                     visualizarParcelasPagas();
                     break;
-                case 5:
+                case 3:
                     visualizarSaldoAPagar();
                     break;
                 case 0:
@@ -55,7 +47,7 @@ public class FinanciamentoView {
         } while (opcao != 0);
     }
 
-    public void adicionarFinanciamentoImobiliario() {
+    public void adicionarFinanciamentoImobiliario(int idCliente) {
         System.out.print("Digite o ID: ");
         int id = scanner.nextInt();
         System.out.print("Digite o valor do financiamento: ");
@@ -68,12 +60,12 @@ public class FinanciamentoView {
         System.out.print("Qual é a taxa de juros anual? ");
         double taxaJurosAnual = scanner.nextDouble();
 
-        FinanciamentoImobiliario financiamento = new FinanciamentoImobiliario(id, valor, prazo, tipoImovel, taxaJurosAnual);
+        FinanciamentoImobiliario financiamento = new FinanciamentoImobiliario(id, valor, prazo, tipoImovel, taxaJurosAnual,idCliente);
         controller.adicionarFinanciamento(financiamento);
         System.out.println("Financiamento Imobiliário adicionado com sucesso!");
     }
 
-    public void adicionarFinanciamentoVeicular() {
+    public void adicionarFinanciamentoVeicular(int doc) {
         System.out.print("Digite o ID: ");
         int id = scanner.nextInt();
         System.out.print("Digite o valor do financiamento: ");
@@ -88,7 +80,7 @@ public class FinanciamentoView {
         System.out.print("Qual é a taxa de juros mensal? ");
         double taxaJurosMensal = scanner.nextDouble();
 
-        FinanciamentoVeicular financiamento = new FinanciamentoVeicular(id, valor, prazo, tipoVeiculo, anoFabricacao, taxaJurosMensal);
+        FinanciamentoVeicular financiamento = new FinanciamentoVeicular(id, valor, prazo, tipoVeiculo, anoFabricacao, taxaJurosMensal,doc);
         controller.adicionarFinanciamento(financiamento);
         System.out.println("Financiamento Veicular adicionado com sucesso!");
     }
