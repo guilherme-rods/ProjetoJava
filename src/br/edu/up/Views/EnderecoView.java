@@ -1,17 +1,22 @@
 package br.edu.up.Views;
-
+import br.edu.up.Controller.*;
+import br.edu.up.Controller.ContaControler;
 import br.edu.up.Controller.EnderecoController;
+import br.edu.up.Modelos.Conta;
 import br.edu.up.Modelos.Endereco;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class EnderecoView {
+
+    private ContaControler clienteController;
     private Scanner scanner;
     private EnderecoController enderecoController;
 
-    public EnderecoView() {
+    public EnderecoView()throws IOException {
         this.scanner = new Scanner(System.in, "UTF-8");
+        this.clienteController = new ContaControler();
     }
 
     public void setController(EnderecoController controller) {
@@ -60,6 +65,7 @@ public class EnderecoView {
     public void adicionarEndereco(int id) throws IOException {
         Endereco endereco = obterDadosEndereco();
         enderecoController.adicionarEndereco(endereco);
+        clienteController.setEndereco(id);
     }
 
     public void atualizarEndereco() throws IOException {
