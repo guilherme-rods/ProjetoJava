@@ -18,7 +18,6 @@ public class EnderecoView {
     public EnderecoView() throws IOException {
         this.scanner = new Scanner(System.in, "UTF-8");
         this.clienteController = new ContaControler();
-        this.enderecoController = new EnderecoController();
     }
 
     public void setController(EnderecoController controller) {

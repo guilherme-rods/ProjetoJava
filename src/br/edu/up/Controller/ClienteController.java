@@ -8,19 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteController {
-    private final ClienteDAO _dbConta;
-    private final List<Cliente> _listaClientes;
+    private final ClienteDAO _dbCliente;
+    private List<Cliente> _listaClientes;
     private int qtdJaAdd = 0;
     public ClienteController(){
-        _dbConta = new ClienteDAO("clientes.csv");;
-        _listaClientes = new ArrayList<>();
+        _dbCliente = new ClienteDAO("clientes.csv");;
+        try {
+            _listaClientes = _dbCliente.lerClientes();
+            qtdJaAdd = _listaClientes.getLast().getId();
+        } catch (Exception e) {
+            _listaClientes = new ArrayList<>();
+        }
     }
 
     public int AddCliente(Cliente cliente){
         try {
             qtdJaAdd++;
             cliente.setId(qtdJaAdd);
-            _dbConta.adicionar(cliente);
+            _dbCliente.adicionar(cliente);
         } catch (Exception e){
             System.out.println("Não foi possível adicionar um cliente");
         }
