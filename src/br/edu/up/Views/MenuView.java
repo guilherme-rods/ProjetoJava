@@ -2,12 +2,15 @@ package br.edu.up.Views;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.edu.up.Controller.ClienteController;
+
 public class MenuView {
     private Scanner scanner;
     private ClienteView clienteView;
     private EnderecoView enderecoView;
     private ContaView contaView;
     private FinanciamentoView financiamentoView;
+    private ClienteController clienteController;
 
     public MenuView() throws IOException {
         this.scanner = new Scanner(System.in);
@@ -15,6 +18,7 @@ public class MenuView {
         this.enderecoView = new EnderecoView();
         this.contaView = new ContaView();
         this.financiamentoView = new FinanciamentoView();
+        this.clienteController = new ClienteController();
     }
 
     public void exibirMenu() throws IOException {
@@ -36,7 +40,8 @@ public class MenuView {
             switch (opcao) {
                 case 1:
                     int idCliente = clienteView.AddCliente();
-                    enderecoView.adicionarEndereco(idCliente);// id do cliente criado a cima
+                    enderecoView.adicionarEndereco();
+                    // clienteController.getCliente();
                     contaView.criarConta(idCliente);// id do cliente a cima
                     // cartaoview  id da conta no cartão
                     break;
