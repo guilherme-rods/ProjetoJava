@@ -2,35 +2,31 @@ package br.edu.up.Modelos;
 
 import java.util.Date;
 
-public class Cartao {
+public abstract class Cartao {
 
-    private int num_cartao;
-    private int cod_validacao;
-    private Date validade;
-    private int cliente;
-    private String bandeira;
-    private boolean titular;
-    private boolean bloqueado;
-    private double lim_credito;
-    private String tipo_operacao;
-    private Date emissao;
-    private Date vencimento;
+    protected int idCartao;
+    protected int num_cartao;
+    protected int num_conta;
+    protected Date validade;
+    protected String bandeira;
+    public int tipoCartao;
 
-    public Cartao(int num_cartao, int cod_validacao, Date validade, int cliente, String bandeira, boolean titular, boolean bloqueado,
-            double lim_credito, String tipo_operacao, Date emissao, Date vencimento) {
+    public Cartao(int idCartao, int num_cartao, int num_conta, Date validade, String bandeira, int tipoCartao) {
+        this.idCartao = idCartao;
         this.num_cartao = num_cartao;
-        this.cod_validacao = cod_validacao;
+        this.num_conta = num_conta;
         this.validade = validade;
-        this.cliente = cliente;
         this.bandeira = bandeira;
-        this.titular = titular;
-        this.bloqueado = bloqueado;
-        this.lim_credito = lim_credito;
-        this.tipo_operacao = tipo_operacao;
-        this.emissao = emissao;
-        this.vencimento = vencimento;
+        this.tipoCartao = tipoCartao;
     }
 
+    public int getIdCartao() {
+        return idCartao;
+    }
+
+    public void setIdCartao(int idCartao) {
+        this.idCartao = idCartao;
+    }
 
     public int getNum_cartao() {
         return num_cartao;
@@ -40,12 +36,12 @@ public class Cartao {
         this.num_cartao = num_cartao;
     }
 
-    public int getCod_validacao() {
-        return cod_validacao;
+    public int getNum_conta() {
+        return num_conta;
     }
 
-    public void setCod_validacao(int cod_validacao) {
-        this.cod_validacao = cod_validacao;
+    public void setNum_conta(int num_conta) {
+        this.num_conta = num_conta;
     }
 
     public Date getValidade() {
@@ -56,75 +52,25 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public int getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(int cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getBandeira(){
+    public String getBandeira() {
         return bandeira;
     }
 
-    public void setBandeira(String bandeira){
+    public void setBandeira(String bandeira) {
         this.bandeira = bandeira;
     }
 
-    public boolean isTitular() {
-        return titular;
+    public int getTipoCartao() {
+        return tipoCartao;
     }
 
-    public void setTitular(boolean titular) {
-        this.titular = titular;
-    }
-
-    public boolean isBloqueado() {
-        return bloqueado;
-    }
-
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
-
-    public double getLim_credito() {
-        return lim_credito;
-    }
-
-    public void setLim_credito(double lim_credito) {
-        this.lim_credito = lim_credito;
-    }
-
-    public String getTipo_operacao() {
-        return tipo_operacao;
-    }
-
-    public void setTipo_operacao(String tipo_operacao) {
-        this.tipo_operacao = tipo_operacao;
-    }
-    public Date getEmissao(){
-        return emissao;
-    }
-    
-    public void setEmissao(Date emissao){
-        this.emissao = emissao;
+    public void setTipoCartao(int tipoCartao) {
+        this.tipoCartao = tipoCartao;
     }
 
     @Override
     public String toString() {
-        return "Cartao [num_cartao=" + num_cartao + 
-        ", cod_validacao=" + cod_validacao + 
-        ", validade=" + validade + 
-        ", nome=" + cliente + 
-        ", titular=" + titular + 
-        ", bloqueado=" + bloqueado + 
-        ", lim_credito=" + lim_credito + 
-        ", tipo_operacao=" + tipo_operacao + "]";
+        return "Cartao [idCartao=" + idCartao + ", num_cartao=" + num_cartao + ", num_conta=" + num_conta
+                + ", validade=" + validade + ", bandeira=" + bandeira + ", tipoCartao=" + tipoCartao + "]";
     }
-
-
-    public Date getVencimento() {
-        return vencimento;
-    }
-} 
+}    

@@ -1,7 +1,8 @@
 package br.edu.up.DAO;
 
 import br.edu.up.Modelos.Cartao;
-import br.edu.up.Modelos.Cliente;
+import br.edu.up.Modelos.CartaoCredito;
+import br.edu.up.Modelos.CartaoDebito;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -22,24 +23,27 @@ public class CartaoDAO {
         String linha;
 
         while ((linha = br.readLine()) != null) {
-            if (linha.startsWith("num_cartao"))
+            if (linha.startsWith("idCartao"))
                 continue;
 
             String[] dados = linha.split(";");
-            int numCartao = Integer.parseInt(dados[0]);
-            int codValidacao = Integer.parseInt(dados[1]);
-            Date validade = parseDate(dados[2]);
-            int cliente = Integer.parseInt(dados[3]); // Assumindo que o nome do cliente está na posição 3
-            String bandeira = dados[4];
-            boolean titular = Boolean.parseBoolean(dados[5]);
-            boolean bloqueado = Boolean.parseBoolean(dados[6]);
-            double limCredito = Double.parseDouble(dados[7]);
-            String tipoOperacao = dados[8];
-            Date emissao = parseDate(dados[9]);
-            Date vencimento = parseDate(dados[10]);
+            int idCartao = Integer.parseInt(dados[0]);
+            int tipoCartao = Integer.parseInt(dados[1]);
+            int numCartao = Integer.parseInt(dados[2]);
+            int numConta = Integer.parseInt(dados[3]);
+            Date validade = parseDate(dados[4]);
+            String bandeira = dados[5];
 
-            Cartao cartao = new Cartao(numCartao, codValidacao, validade, cliente, bandeira, titular, bloqueado, limCredito, tipoOperacao, emissao, vencimento);
-            cartoes.add(cartao);
+            if (tipoCartao == 1) { // Cartão de Crédito
+                double limite = Double.parseDouble(dados[6]);
+                double saldoUtilizado = Double.parseDouble(dados[7]);
+                CartaoCredito cartaoCredito = new CartaoCredito(idCartao, numCartao, numConta, validade, bandeira, tipoCartao, limite, saldoUtilizado);
+                cartoes.add(cartaoCredito);
+            } else if (tipoCartao == 2) { // Cartão de Débito
+                double saldo = Double.parseDouble(dados[8]);
+                CartaoDebito cartaoDebito = new CartaoDebito(idCartao, numCartao, numConta, validade, bandeira, tipoCartao, saldo);
+                cartoes.add(cartaoDebito);
+            }
         }
         br.close();
         return cartoes;
@@ -47,7 +51,7 @@ public class CartaoDAO {
 
     public void salvarCartoes(List<Cartao> cartoes) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo));
-        bw.write("num_cartao;cod_validacao;validade;cliente;bandeira;titular;bloqueado;lim_credito;tipo_operacao;emissao;vencimento\n");
+        bw.write("idCartao;tipoCartao;num_cartao;num_conta;validade;bandeira;limite;saldoUtilizado;saldo\n");
         for (Cartao cartao : cartoes) {
             bw.write(cartaoToStringCSV(cartao) + "\n");
         }
@@ -56,7 +60,7 @@ public class CartaoDAO {
 
     private Date parseDate(String dateStr) {
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/yy");
             return formatter.parse(dateStr);
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,21 +69,31 @@ public class CartaoDAO {
     }
 
     private String formatDate(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/yy");
         return formatter.format(date);
     }
 
     private String cartaoToStringCSV(Cartao cartao) {
-        return cartao.getNum_cartao() + ";" +
-                cartao.getCod_validacao() + ";" +
-                formatDate(cartao.getValidade()) + ";" +
-                cartao.getCliente() + ";" +
-                cartao.getBandeira() + ";" +
-                cartao.isTitular() + ";" +
-                cartao.isBloqueado() + ";" +
-                cartao.getLim_credito() + ";" +
-                cartao.getTipo_operacao() + ";" +
-                formatDate(cartao.getEmissao()) + ";" +
-                formatDate(cartao.getVencimento());
+        if (cartao instanceof CartaoCredito) {
+            CartaoCredito cc = (CartaoCredito) cartao;
+            return cc.getIdCartao() + ";" +
+                    cc.getTipoCartao() + ";" +
+                    cc.getNum_cartao() + ";" +
+                    cc.getNum_conta() + ";" +
+                    formatDate(cc.getValidade()) + ";" +
+                    cc.getBandeira() + ";" +
+                    cc.getLimite() + ";" +
+                    cc.getSaldoUtilizado() + ";";
+        } else if (cartao instanceof CartaoDebito) {
+            CartaoDebito cd = (CartaoDebito) cartao;
+            return cd.getIdCartao() + ";" +
+                    cd.getTipoCartao() + ";" +
+                    cd.getNum_cartao() + ";" +
+                    cd.getNum_conta() + ";" +
+                    formatDate(cd.getValidade()) + ";" +
+                    cd.getBandeira() + ";;;;" +
+                    cd.getSaldo();
+        }
+        return "";
     }
 }
