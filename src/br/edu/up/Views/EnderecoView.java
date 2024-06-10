@@ -107,13 +107,12 @@ public class EnderecoView {
         String numero = scanner.nextLine().trim();
         System.out.print("");
 
-        System.out.println("Qual id?");
-        scanner.nextLine();
-        int id = scanner.nextInt();
+        // System.out.println("Qual id?");
+        // scanner.nextLine();
+        // int id = scanner.nextInt();
 
-        Boolean status = true;
 
-        return new Endereco(id, cep, estado, cidade, bairro, logradouro, numero, status);
+        return new Endereco(0, cep, estado, cidade, bairro, logradouro, numero, true);
     }
 
     public int obterIdEndereco() {
