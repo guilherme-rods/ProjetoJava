@@ -52,10 +52,14 @@ public class MenuView {
                 case 5:
                     System.out.println("que tipo de financiamento pretende?\n");
                     System.out.println("1 - Veicular\n2 - Imobiliario");
-                    if(scanner.nextInt()==2){
-                        financiamentoView.adicionarFinanciamentoImobiliario();
+                    int opt = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Qual seu Documento?");
+                    String doc = scanner.nextLine();
+                    if(opt ==2){
+                        financiamentoView.adicionarFinanciamentoImobiliario(clienteView.buscarIdCliente(doc));
                     }
-                    financiamentoView.adicionarFinanciamentoVeicular();
+                    financiamentoView.adicionarFinanciamentoVeicular(clienteView.buscarIdCliente(doc));
                     break;
                 case 6:
                     financiamentoView.menu();

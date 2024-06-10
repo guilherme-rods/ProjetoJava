@@ -6,17 +6,24 @@ public abstract class Financiamento {
     public int tipoFinanciamento;
     protected double valor;
     protected int prazo;
+    protected int idCliente;
 
-    public Financiamento(int id, double valor, int prazo) {
+    public Financiamento(int id, double valor, int prazo,int idCliente){
         this.id = id;
         this.valor = valor;
         this.prazo = prazo;
+        this.idCliente = idCliente;
     }
 
     public int getId() {
         return id;
     }
-
+    public void setIdCliente(int idCliente){
+        this.idCliente = idCliente;
+    }
+    public int getIdClienye(){
+        return idCliente;
+    }
     public void setId(int id) {
         this.id = id;
     }

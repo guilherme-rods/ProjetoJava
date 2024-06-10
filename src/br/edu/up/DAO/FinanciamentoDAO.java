@@ -29,17 +29,18 @@ public class FinanciamentoDAO {
             int tipoFinanciamento = Integer.parseInt(dados[1]);
             double valor = Double.parseDouble(dados[2]);
             int prazo = Integer.parseInt(dados[3]);
+            int idCliente = Integer.parseInt(dados[9]);
 
             if (tipoFinanciamento == 1) {
                 String tipoImovel = dados[4];
                 double taxaJurosAnual = Double.parseDouble(dados[5]);
-                FinanciamentoImobiliario financiamentoImobiliario = new FinanciamentoImobiliario(id, valor, prazo, tipoImovel, taxaJurosAnual);
+                FinanciamentoImobiliario financiamentoImobiliario = new FinanciamentoImobiliario(id, valor, prazo, tipoImovel, taxaJurosAnual,idCliente);
                 financiamentos.add(financiamentoImobiliario);
             } else if (tipoFinanciamento == 2) {
                 String tipoVeiculo = dados[6];
                 int anoFabricacao = Integer.parseInt(dados[7]);
                 double taxaJurosMensal = Double.parseDouble(dados[8]);
-                FinanciamentoVeicular financiamentoVeicular = new FinanciamentoVeicular(id, valor, prazo, tipoVeiculo, anoFabricacao, taxaJurosMensal);
+                FinanciamentoVeicular financiamentoVeicular = new FinanciamentoVeicular(id, valor, prazo, tipoVeiculo, anoFabricacao, taxaJurosMensal,idCliente);
                 financiamentos.add(financiamentoVeicular);
             }
         }
