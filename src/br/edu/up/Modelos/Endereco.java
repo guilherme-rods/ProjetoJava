@@ -8,9 +8,9 @@ public class Endereco {
     private String bairro;
     private String logradouro;
     private String numero_residencial;
+    private Boolean status;
 
-
-    public Endereco(int id, String cep, String estado, String cidade, String bairro, String logradouro, String numero_residencial) {
+    public Endereco(int id, String cep, String estado, String cidade, String bairro, String logradouro, String numero_residencial, Boolean status) {
         this.id = id;
         this.cep = cep;
         this.estado = estado;
@@ -18,7 +18,7 @@ public class Endereco {
         this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero_residencial = numero_residencial;
-        
+        this.status = status;
     }
 
     public int getId() {
@@ -75,6 +75,14 @@ public class Endereco {
 
     public void setNumero_residencial(String numero_residencial) {
         this.numero_residencial = numero_residencial;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override

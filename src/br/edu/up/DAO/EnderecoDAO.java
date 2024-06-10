@@ -41,11 +41,12 @@ public class EnderecoDAO {
                     String bairro = dados[4];
                     String logradouro = dados[5];
                     String num_residencial = dados[6];
+                    Boolean status = Boolean.parseBoolean(dados[7]);
 
                     Cidade cidade = cidades.stream().filter(c -> c.getCod() == cidadeId).findFirst().orElse(null);
                     if (cidade != null) {
                         Endereco endereco = new Endereco(id, cep, estado, cidade.getNome(), bairro, logradouro,
-                                num_residencial);
+                                num_residencial, status);
                         enderecos.add(endereco);
                     }
                 } catch (NumberFormatException e) {
@@ -74,7 +75,7 @@ public class EnderecoDAO {
         int novoId = enderecos.isEmpty() ? 1 : enderecos.get(enderecos.size() - 1).getId() + 1;
         Cidade cidade = validarCidade(endereco.getCidade());
         Endereco novoEndereco = new Endereco(novoId, endereco.getCep(), endereco.getEstado(), cidade.getNome(),
-                endereco.getBairro(), endereco.getLogradouro(), endereco.getNumero_residencial());
+                endereco.getBairro(), endereco.getLogradouro(), endereco.getNumero_residencial(), endereco.getStatus());
         enderecos.add(novoEndereco);
         salvarEnderecos(enderecos);
     }
@@ -86,9 +87,7 @@ public class EnderecoDAO {
             if (endereco.getId() == enderecoAtualizado.getId()) {
                 Cidade cidade = validarCidade(enderecoAtualizado.getCidade());
                 enderecos.set(i,
-                        new Endereco(enderecoAtualizado.getId(), enderecoAtualizado.getCep(),
-                                enderecoAtualizado.getEstado(), cidade.getNome(), enderecoAtualizado.getBairro(),
-                                enderecoAtualizado.getLogradouro(), enderecoAtualizado.getNumero_residencial()));
+                        new Endereco(enderecoAtualizado.getId(), enderecoAtualizado.getCep(),enderecoAtualizado.getEstado(), cidade.getNome(), enderecoAtualizado.getBairro(),enderecoAtualizado.getLogradouro(), enderecoAtualizado.getNumero_residencial(),enderecoAtualizado.getStatus()));
                 break;
             }
         }
@@ -97,12 +96,15 @@ public class EnderecoDAO {
 
     public void deletarEndereco(int id) throws IOException {
         List<Endereco> enderecos = lerEnderecos();
-        enderecos.removeIf(endereco -> endereco.getId() == id);
-        // Reajustar IDs
-        for (int i = 0; i < enderecos.size(); i++) {
-            Endereco endereco = enderecos.get(i);
-            endereco.setId(i + 1);
+
+        for (Endereco endereco : enderecos) {
+            if (endereco.getId() == id) {
+                endereco.setStatus(false);
+                break;
+            }
         }
+        
+        // Salva a lista de endereços modificada
         salvarEnderecos(enderecos);
     }
 
