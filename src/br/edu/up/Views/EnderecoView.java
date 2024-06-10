@@ -36,7 +36,7 @@ public class EnderecoView {
                     listarEnderecos();
                     break;
                 case 2:
-                    adicionarEndereco();
+                    adicionarEndereco(1);
                     break;
                 case 3:
                     atualizarEndereco();
@@ -57,7 +57,7 @@ public class EnderecoView {
         enderecoController.listarEnderecos();
     }
 
-    public void adicionarEndereco() throws IOException {
+    public void adicionarEndereco(int id) throws IOException {
         Endereco endereco = obterDadosEndereco();
         enderecoController.adicionarEndereco(endereco);
     }

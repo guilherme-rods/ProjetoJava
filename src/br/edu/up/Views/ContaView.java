@@ -29,7 +29,7 @@ public class ContaView {
 
             switch (opcao) {
                 case 1:
-                
+                    // criar um cliente antes e atribuir id
                     criarConta(1);
                     break;
                 case 2:

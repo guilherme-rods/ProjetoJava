@@ -55,7 +55,7 @@ public class FinanciamentoView {
         } while (opcao != 0);
     }
 
-    private void adicionarFinanciamentoImobiliario() {
+    public void adicionarFinanciamentoImobiliario() {
         System.out.print("Digite o ID: ");
         int id = scanner.nextInt();
         System.out.print("Digite o valor do financiamento: ");
@@ -73,7 +73,7 @@ public class FinanciamentoView {
         System.out.println("Financiamento Imobiliário adicionado com sucesso!");
     }
 
-    private void adicionarFinanciamentoVeicular() {
+    public void adicionarFinanciamentoVeicular() {
         System.out.print("Digite o ID: ");
         int id = scanner.nextInt();
         System.out.print("Digite o valor do financiamento: ");
