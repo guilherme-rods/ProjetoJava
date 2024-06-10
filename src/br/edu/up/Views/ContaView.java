@@ -47,7 +47,7 @@ public class ContaView {
         } while (opcao != 4);
     }
 
-    public void criarConta(int cliente) throws IOException {
+    public int criarConta(int cliente) throws IOException {
         System.out.println("Escolha o tipo de conta:");
         System.out.println("1. Conta Poupança");
         System.out.println("2. Conta Corrente");
@@ -66,6 +66,7 @@ public class ContaView {
                 
         String resultado = contaController.criar(tipo, num_conta, saldo, cliente);
         System.out.println(resultado);
+        return num_conta;
     }
 
     public void buscarConta() {

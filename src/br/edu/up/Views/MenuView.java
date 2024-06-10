@@ -42,7 +42,7 @@ public class MenuView {
                     int idCliente = clienteView.AddCliente();
                     enderecoView.adicionarEndereco();
                     // clienteController.getCliente();
-                    contaView.criarConta(idCliente);// id do cliente a cima
+                    int id_conta = contaView.criarConta(idCliente);// id do cliente a cima
                     // cartaoview  id da conta no cartão
                     break;
                 case 2:
