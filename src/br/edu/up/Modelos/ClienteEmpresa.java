@@ -5,8 +5,26 @@ public class ClienteEmpresa extends Cliente {
     private String nome_representante;
     private String telefoneRepresentante;
 
-    public ClienteEmpresa(String nome, String telefone,String cnpj,String nome_representante ,String telefoneRepresentante) {
-        super( nome, telefone);
+    public ClienteEmpresa(int id,
+                          String nome,
+                          String telefone,
+                          String cnpj,
+                          String nome_representante,
+                          String telefoneRepresentante)
+    {
+        super(id, nome, telefone);
+        this.telefoneRepresentante=telefoneRepresentante;
+        this.nome_representante = nome_representante;
+        this.cnpj=cnpj;
+    }
+
+    public ClienteEmpresa(String nome,
+                          String telefone,
+                          String cnpj,
+                          String nome_representante,
+                          String telefoneRepresentante)
+    {
+        super(nome, telefone);
         this.telefoneRepresentante=telefoneRepresentante;
         this.nome_representante = nome_representante;
         this.cnpj=cnpj;
@@ -36,5 +54,10 @@ public class ClienteEmpresa extends Cliente {
 
     public void setTelefoneRepresentante(String telefoneRepresentante) {
         this.telefoneRepresentante = telefoneRepresentante;
+    }
+
+    @Override
+    public String ToStringCSV() {
+        return id + ';' + nome + ';' + telefone + ';' + cnpj + ';' + telefone + ';' + nome_representante + ';' + telefoneRepresentante;
     }
 }
