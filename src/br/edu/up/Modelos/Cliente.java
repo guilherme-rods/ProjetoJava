@@ -12,7 +12,9 @@ public abstract class Cliente {
         this.telefone = telefone;
     }
 
-    public Cliente(String nome2, String telefone2) {
+    public Cliente(String nome, String telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
     }
 
     public int getId() {
@@ -48,4 +50,6 @@ public abstract class Cliente {
 
     public abstract String getDocumento();
     public abstract void setDocumento(String documento);
+
+    public abstract String ToStringCSV();
 }

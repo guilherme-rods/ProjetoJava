@@ -1,23 +1,31 @@
 package br.edu.up.Controller;
 
+import br.edu.up.DAO.ClienteDAO;
+import br.edu.up.DAO.ContaDAO;
 import br.edu.up.Modelos.Cliente;
 import br.edu.up.Modelos.Endereco;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteController {
+    private final ClienteDAO _dbConta;
     private final List<Cliente> _listaClientes;
     private int qtdJaAdd = 0;
     public ClienteController(){
+        _dbConta = new ClienteDAO("clientes.csv");;
         _listaClientes = new ArrayList<>();
     }
 
     public int AddCliente(Cliente cliente){
-        qtdJaAdd++;
-        cliente.setId(qtdJaAdd);
-        _listaClientes.add(cliente);
+        try {
+            qtdJaAdd++;
+            cliente.setId(qtdJaAdd);
+            _dbConta.adicionar(cliente);
+        } catch (Exception e){
+            System.out.println("Não foi possível adicionar um cliente");
+        }
 
-        return qtdJaAdd;
+        return cliente.getId();
     }
 
     public void AddEndereco(int idCliente, Endereco endereco){

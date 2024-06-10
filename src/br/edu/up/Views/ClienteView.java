@@ -3,7 +3,6 @@ package br.edu.up.Views;
 import br.edu.up.Controller.ClienteController;
 import br.edu.up.Modelos.ClienteEmpresa;
 import br.edu.up.Modelos.ClientePessoa;
-import br.edu.up.Modelos.Endereco;
 
 import java.util.Scanner;
 
@@ -53,47 +52,10 @@ public class ClienteView {
                 ? new ClientePessoa(nome, telefone, doc)
                 : new ClienteEmpresa(nome, telefone, doc, representante, tel_representante);
 
-        var position = _controller.AddCliente(cliente);
-
-        do {
-            System.out.println("Adicionar endereço?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-
-            opcao = _scanner.nextInt();
-            _scanner.nextLine();
-
-            if(opcao != 1 && opcao != 2){
-                System.err.println("Opção inválida!");
-            }
-        } while (opcao != 1 && opcao != 2);
-
-        if(opcao == 1){
-            System.out.println("Insira os dados do endereço");
-            System.out.println("CEP");
-            var cep = _scanner.nextLine();
-
-            System.out.println("Estado");
-            var estado = _scanner.nextLine();
-
-            System.out.println("Cidade");
-            var cidade = _scanner.nextLine();
-
-            System.out.println("Bairro");
-            var bairro = _scanner.nextLine();
-
-            System.out.println("Logradouro");
-            var logradouro = _scanner.nextLine();
-
-            System.out.println("Número");
-            var numero = _scanner.nextLine();
-
-            // var endereco = new Endereco(cep, estado, cidade, bairro, logradouro, numero);
-            // _controller.AddEndereco(position, endereco);
-        }
+        var idCliente = _controller.AddCliente(cliente);
 
         System.out.println("Cliente adicionado");
-        return position;
+        return idCliente;
     }
 
     public void Edit() {
