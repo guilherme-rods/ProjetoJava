@@ -5,8 +5,11 @@ public class ClienteEmpresa extends Cliente {
     private String nome_representante;
     private String telefoneRepresentante;
 
-    public ClienteEmpresa(int id, String nome, String telefone) {
-        super(id, nome, telefone);
+    public ClienteEmpresa(String nome, String telefone,String cnpj,String nome_representante ,String telefoneRepresentante) {
+        super( nome, telefone);
+        this.telefoneRepresentante=telefoneRepresentante;
+        this.nome_representante = nome_representante;
+        this.cnpj=cnpj;
     }
 
     @Override

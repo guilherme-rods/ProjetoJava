@@ -49,9 +49,7 @@ public class ClienteView {
             tel_representante = _scanner.nextLine();
         }
 
-        var cliente = opcao == 1
-                ? new ClientePessoa(nome, telefone, doc)
-                : new ClienteEmpresa(nome, telefone, doc, representante, tel_representante);
+        var cliente = opcao == 1 ? new ClientePessoa(nome, telefone, doc) : new ClienteEmpresa(nome, telefone, doc, representante, tel_representante);
 
         var position = _controller.AddCliente(cliente);
 
@@ -88,8 +86,8 @@ public class ClienteView {
             System.out.println("Número");
             var numero = _scanner.nextLine();
 
-            var endereco = new Endereco(cep, estado, cidade, bairro, logradouro, numero);
-            _controller.AddEndereco(position, endereco);
+            // var endereco = new Endereco(cep, estado, cidade, bairro, logradouro, numero);
+            // _controller.AddEndereco(position, endereco);
         }
 
         System.out.println("Cliente adicionado");

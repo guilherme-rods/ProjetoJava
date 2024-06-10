@@ -29,11 +29,11 @@ public class MenuView {
             switch (opcao) {
                 case 1:
                     ClienteView clienteView = new ClienteView();
-                    clienteView.exibirMenu();
+                    // clienteView.exibirMenu();
                     break;
                 case 2:
                     ContaView contaView = new ContaView();
-                    contaView.exibirMenu();
+                    // contaView.exibirMenu();
                     break;
                 case 3:
                     EnderecoView enderecoView = new EnderecoView();

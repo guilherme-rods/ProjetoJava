@@ -1,8 +1,9 @@
 package br.edu.up.Modelos;
 
 public class ClientePessoa extends Cliente{
-  public ClientePessoa(int id, String nome, String telefone) {
-    super(id, nome, telefone);
+  public ClientePessoa(String nome, String telefone, String cpf) {
+    super(nome, telefone);
+    this.cpf = cpf;
   }
 
   private String cpf;
