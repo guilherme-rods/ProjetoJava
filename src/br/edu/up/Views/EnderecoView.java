@@ -16,11 +16,12 @@ public class EnderecoView {
     public EnderecoView() throws IOException {
         this.scanner = new Scanner(System.in, "UTF-8");
         this.clienteController = new ContaControler();
+        this.enderecoController = new EnderecoController();
     }
 
-    public void setController(EnderecoController controller) {
-        this.enderecoController = controller;
-    }
+    // public void setController(EnderecoController controller) {
+    //     this.enderecoController = controller;
+    // }
 
     public void exibirMenu() throws IOException {
         boolean continuar = true;
@@ -37,16 +38,20 @@ public class EnderecoView {
 
             switch (opcao) {
                 case 1:
-                    listarEnderecos();
+                    var enderecos = listarEnderecos();
+                    mostrarEnderecos(enderecos);
                     break;
                 case 2:
                     adicionarEndereco();
+                    System.out.println("\nEndereço adicionado com sucesso!");
                     break;
                 case 3:
                     atualizarEndereco();
+                    System.out.println("\nEndereço atualizado com sucesso!");
                     break;
                 case 4:
                     excluirEndereco();
+                    System.out.println("\nEndereço excluído com sucesso!");
                     break;
                 case 5:
                     continuar = false;
@@ -57,14 +62,13 @@ public class EnderecoView {
         }
     }
 
-    public void listarEnderecos() throws IOException {
-        enderecoController.listarEnderecos();
+    public List<Endereco> listarEnderecos() throws IOException {
+        return enderecoController.listarEnderecos();
     }
 
     public int adicionarEndereco() throws IOException {
         Endereco endereco = obterDadosEndereco();
         enderecoController.adicionarEndereco(endereco);
-
         return endereco.getId();
 
     }
@@ -110,7 +114,6 @@ public class EnderecoView {
         // System.out.println("Qual id?");
         // scanner.nextLine();
         // int id = scanner.nextInt();
-
 
         return new Endereco(0, cep, estado, cidade, bairro, logradouro, numero, true);
     }
