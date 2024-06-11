@@ -10,12 +10,10 @@ import java.util.Scanner;
 public class ClienteView {
 
     private ClienteController _controller;
-    private ClienteDAO _clienteDAO;
     private Scanner _scanner;
 
     public ClienteView() {
         _controller = new ClienteController();
-        _clienteDAO = new ClienteDAO("clientes"); // Nome do arquivo CSV
         _scanner = new Scanner(System.in);
     }
 
@@ -60,13 +58,6 @@ public class ClienteView {
 
         var cliente = opcao == 1 ? clientePessoa : clienteEmpresa;
         var idCliente = _controller.AddCliente(cliente);
-
-        try {
-            _clienteDAO.adicionar(cliente);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         System.out.println("Cliente adicionado");
         return idCliente;
     }
