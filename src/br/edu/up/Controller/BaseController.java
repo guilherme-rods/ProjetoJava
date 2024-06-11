@@ -9,7 +9,6 @@ public class BaseController {
     private CidadeDAO cidadeDAO;
     private EnderecoDAO enderecoDAO;
     private ContaDAO contaDAO;
-    private FinanciamentoDAO financiamentoDAO;
 
     public BaseController(String caminhoArquivoCartao, String caminhoArquivoCliente, String caminhoArquivoCidade,
                           String caminhoArquivoEndereco, String caminhoArquivoConta, String caminhoArquivoFinanciamento) {
@@ -18,7 +17,6 @@ public class BaseController {
         this.cidadeDAO = new CidadeDAO("cidades.csv");
         this.enderecoDAO = new EnderecoDAO(caminhoArquivoEndereco, this.cidadeDAO);
         this.contaDAO = new ContaDAO(caminhoArquivoConta);
-        this.financiamentoDAO = new FinanciamentoDAO(caminhoArquivoFinanciamento);
     }
 
     // Getters for each DAO if needed
@@ -40,9 +38,5 @@ public class BaseController {
 
     public ContaDAO getContaDAO() {
         return contaDAO;
-    }
-
-    public FinanciamentoDAO getFinanciamentoDAO() {
-        return financiamentoDAO;
     }
 }

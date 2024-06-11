@@ -8,16 +8,12 @@ public class MenuView {
     private ClienteView clienteView;
     private EnderecoView enderecoView;
     private ContaView contaView;
-    private FinanciamentoView financiamentoView;
-    private ClienteController clienteController;
 
     public MenuView() throws IOException {
         this.scanner = new Scanner(System.in);
         this.clienteView = new ClienteView();
         this.enderecoView = new EnderecoView();
         this.contaView = new ContaView();
-        this.financiamentoView = new FinanciamentoView();
-        this.clienteController = new ClienteController();
     }
 
     public void exibirMenu() throws IOException {
@@ -27,10 +23,7 @@ public class MenuView {
             System.out.println("1. Criar conta");
             System.out.println("2. Buscar conta");
             System.out.println("3. Buscar cliente");
-            System.out.println("4. Atualizar conta");
-            System.out.println("5. Adquirir financiamento");
-            System.out.println("6. Atualizar financiamento");
-            System.out.println("7. Sair");
+            System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
@@ -48,27 +41,9 @@ public class MenuView {
                    contaView.buscarConta();
                     break;
                 case 3:
-                clienteView.Edit();
+                    clienteView.Edit();
                     break;
                 case 4:
-                    // eidtar conta que inclui editar endereço e dados do cliente ou adicionar cartão extra etc...
-                    break;
-                case 5:
-                    System.out.println("que tipo de financiamento pretende?\n");
-                    System.out.println("1 - Veicular\n2 - Imobiliario");
-                    int opt = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("Qual seu Documento?");
-                    String doc = scanner.nextLine();
-                    if(opt ==2){
-                        financiamentoView.adicionarFinanciamentoImobiliario(clienteView.buscarIdCliente(doc));
-                    } else
-                        financiamentoView.adicionarFinanciamentoVeicular(clienteView.buscarIdCliente(doc));
-                    break;
-                case 6:
-                    financiamentoView.menu();
-                    break;
-                case 7:
                     continuar = false;
                     break;
                 default:
