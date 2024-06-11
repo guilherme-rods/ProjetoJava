@@ -1,7 +1,7 @@
 package br.edu.up.DAO;
 
-import br.edu.up.Modelos.Endereco;
 import br.edu.up.Modelos.Cidade;
+import br.edu.up.Modelos.Endereco;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class EnderecoDAO {
                     String bairro = dados[4];
                     String logradouro = dados[5];
                     String num_residencial = dados[6];
-                    Boolean status = Boolean.parseBoolean(dados[7]);
+                    Boolean status = Boolean.valueOf(dados[7]);
 
                     Cidade cidade = cidades.stream().filter(c -> c.getCod() == cidadeId).findFirst().orElse(null);
                     if (cidade != null) {
@@ -74,8 +74,7 @@ public class EnderecoDAO {
         List<Endereco> enderecos = lerEnderecos();
         int novoId = enderecos.isEmpty() ? 1 : enderecos.get(enderecos.size() - 1).getId() + 1;
         Cidade cidade = validarCidade(endereco.getCidade());
-        Endereco novoEndereco = new Endereco(novoId, endereco.getCep(), endereco.getEstado(), cidade.getNome(),
-                endereco.getBairro(), endereco.getLogradouro(), endereco.getNumero_residencial(), endereco.getStatus());
+        Endereco novoEndereco = new Endereco(novoId, endereco.getCep(), endereco.getEstado(), cidade.getNome(),endereco.getBairro(), endereco.getLogradouro(), endereco.getNumero_residencial(), endereco.getStatus());
         enderecos.add(novoEndereco);
         salvarEnderecos(enderecos);
     }
@@ -133,6 +132,7 @@ public class EnderecoDAO {
                 cidadeId + ";" +
                 endereco.getBairro() + ";" +
                 endereco.getLogradouro() + ";" +
-                endereco.getNumero_residencial();
+                endereco.getNumero_residencial() + ";" +
+                endereco.getStatus();
     }
 }

@@ -12,7 +12,7 @@ public class ClienteDAO {
     private String arquivo;
 
     public ClienteDAO(String arquivo) {
-        this.arquivo = "./dbbanco/" + arquivo + ".csv";
+        this.arquivo = "./dbbanco/" + arquivo;
         initializeFile();
     }
 

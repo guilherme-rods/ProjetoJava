@@ -1,51 +1,36 @@
 package br.edu.up.Modelos;
 
 public class ClienteEmpresa extends Cliente {
-    private String cnpj;
-    private String nome_representante;
+
+    private String nomeRepresentante;
     private String telefoneRepresentante;
+    private String documento;
 
-    public ClienteEmpresa(int id,
-                          String nome,
-                          String telefone,
-                          String cnpj,
-                          String nome_representante,
-                          String telefoneRepresentante)
-    {
+    public ClienteEmpresa(int id, String nome, String telefone, String cnpj, String nomeRepresentante, String telefoneRepresentante) {
         super(id, nome, telefone);
-        this.telefoneRepresentante=telefoneRepresentante;
-        this.nome_representante = nome_representante;
-        this.cnpj=cnpj;
+        this.setDocumento(cnpj);
+        this.nomeRepresentante = nomeRepresentante;
+        this.telefoneRepresentante = telefoneRepresentante;
     }
 
-    public ClienteEmpresa(String nome,
-                          String telefone,
-                          String cnpj,
-                          String nome_representante,
-                          String telefoneRepresentante)
-    {
+    public ClienteEmpresa(String nome, String telefone, String cnpj, String nomeRepresentante, String telefoneRepresentante) {
         super(nome, telefone);
-        this.telefoneRepresentante=telefoneRepresentante;
-        this.nome_representante = nome_representante;
-        this.cnpj=cnpj;
+        this.setDocumento(cnpj);
+        this.nomeRepresentante = nomeRepresentante;
+        this.telefoneRepresentante = telefoneRepresentante;
     }
 
     @Override
-    public String getDocumento() {
-        return cnpj;
-    }
-
-    @Override
-    public void setDocumento(String documento) {
-        cnpj = documento;
+    public String ToStringCSV() {
+        return getId() + ";" + getNome() + ";" + getDocumento() + ";" + getTelefone() + ";2;" + nomeRepresentante + ";" + telefoneRepresentante;
     }
 
     public String getNome_representante() {
-        return nome_representante;
+        return nomeRepresentante;
     }
 
-    public void setNome_representante(String nome_representante) {
-        this.nome_representante = nome_representante;
+    public void setNome_representante(String nomeRepresentante) {
+        this.nomeRepresentante = nomeRepresentante;
     }
 
     public String getTelefoneRepresentante() {
@@ -57,7 +42,13 @@ public class ClienteEmpresa extends Cliente {
     }
 
     @Override
-    public String ToStringCSV() {
-        return id + ';' + nome + ';' + telefone + ';' + cnpj + ';' + telefone + ';' + nome_representante + ';' + telefoneRepresentante;
+    public String getDocumento() {
+        return documento;
+
+    }
+
+    @Override
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 }

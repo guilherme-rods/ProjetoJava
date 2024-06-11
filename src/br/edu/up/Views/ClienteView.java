@@ -1,17 +1,21 @@
 package br.edu.up.Views;
 
 import br.edu.up.Controller.ClienteController;
+import br.edu.up.DAO.ClienteDAO;
 import br.edu.up.Modelos.ClienteEmpresa;
 import br.edu.up.Modelos.ClientePessoa;
-
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ClienteView {
+
     private ClienteController _controller;
+    private ClienteDAO _clienteDAO;
     private Scanner _scanner;
 
     public ClienteView() {
         _controller = new ClienteController();
+        _clienteDAO = new ClienteDAO("clientes"); // Nome do arquivo CSV
         _scanner = new Scanner(System.in);
     }
 
@@ -33,26 +37,35 @@ public class ClienteView {
             System.out.println("2) Pessoa Jurídica");
             opcao = _scanner.nextInt();
             _scanner.nextLine();
-            if(opcao != 1 && opcao != 2){
+            if (opcao != 1 && opcao != 2) {
                 System.err.println("Opção inválida!");
             }
         } while (opcao != 1 && opcao != 2);
 
         var representante = "";
         var tel_representante = "";
-        if(opcao == 2) {
+        ClientePessoa clientePessoa = null;
+        ClienteEmpresa clienteEmpresa = null;
+
+        if (opcao == 2) {
             System.out.println("Nome do representante");
             representante = _scanner.nextLine();
 
             System.out.println("Telefone do representante");
             tel_representante = _scanner.nextLine();
+            clienteEmpresa = new ClienteEmpresa(nome, telefone, doc, representante, tel_representante);
+        } else {
+            clientePessoa = new ClientePessoa(nome, telefone, doc);
         }
 
-        var cliente = opcao == 1
-                ? new ClientePessoa(nome, telefone, doc)
-                : new ClienteEmpresa(nome, telefone, doc, representante, tel_representante);
-
+        var cliente = opcao == 1 ? clientePessoa : clienteEmpresa;
         var idCliente = _controller.AddCliente(cliente);
+
+        try {
+            _clienteDAO.adicionar(cliente);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Cliente adicionado");
         return idCliente;
@@ -69,7 +82,7 @@ public class ClienteView {
             System.out.println("1) Nome");
             System.out.println("2) Documento");
             System.out.println("3) Telefone");
-            if(cliente instanceof ClienteEmpresa){
+            if (cliente instanceof ClienteEmpresa) {
 
                 System.out.println("4) Nome representante");
                 System.out.println("5) Telefone representante");
@@ -78,7 +91,7 @@ public class ClienteView {
             var opcaoEscolhida = _scanner.nextInt();
             _scanner.nextLine();
 
-            if(cliente instanceof ClientePessoa && (opcaoEscolhida == 4 || opcaoEscolhida == 5)){
+            if (cliente instanceof ClientePessoa && (opcaoEscolhida == 4 || opcaoEscolhida == 5)) {
                 throw new IllegalArgumentException("Opção escolhida inválida!");
             }
 
@@ -110,12 +123,12 @@ public class ClienteView {
             }
 
             _controller.Update(cliente);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }
     }
 
-    public int buscarIdCliente(String doc) {       
-        return  _controller.Get(doc).getId();
-    }   
+    public int buscarIdCliente(String doc) {
+        return _controller.Get(doc).getId();
+    }
 }
