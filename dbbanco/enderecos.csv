@@ -1,7 +1,3 @@
-ID;CEP;Estado;CidadeID;Bairro;Logradouro;NumeroResidencial
+ID;CEP;Estado;CidadeID;Bairro;Logradouro;NumeroResidencial;status
 1;21354-897;SC;2;Portao;Rua Estranha;456;true
 2;13265-894;PR;8;Bigorrilho;Rua alta;998;true
-3;815;PR;8;Centro;R;123;true
-4;8145;PR;8;Centro;rua;123456;true
-5;5146;PR;8;Centro;rrere;123;true
-6;951;pr;8;cic;avenida;11;true
