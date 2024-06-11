@@ -1,8 +1,7 @@
 package br.edu.up.Views;
+import br.edu.up.Controller.ClienteController;
 import java.io.IOException;
 import java.util.Scanner;
-
-import br.edu.up.Controller.ClienteController;
 
 public class MenuView {
     private Scanner scanner;
@@ -63,8 +62,8 @@ public class MenuView {
                     String doc = scanner.nextLine();
                     if(opt ==2){
                         financiamentoView.adicionarFinanciamentoImobiliario(clienteView.buscarIdCliente(doc));
-                    }
-                    financiamentoView.adicionarFinanciamentoVeicular(clienteView.buscarIdCliente(doc));
+                    } else
+                        financiamentoView.adicionarFinanciamentoVeicular(clienteView.buscarIdCliente(doc));
                     break;
                 case 6:
                     financiamentoView.menu();
