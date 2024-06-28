@@ -2,7 +2,7 @@ package br.edu.up.Modelos;
 
 public class Aluno {
 
-    private int matricula;
+    private String matricula;
     private String nome;
     private double nota;
 
@@ -18,10 +18,10 @@ public class Aluno {
     public void setNota(double nota) {
         this.nota = nota;
     }
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 }

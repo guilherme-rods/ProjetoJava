@@ -19,13 +19,13 @@ public class AlunoDao {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo), "UTF-8"))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                if (linha.startsWith("matricula"))
+                if (linha.trim().equalsIgnoreCase(header))
                     continue;
 
                 String[] dados = linha.split(";");
-                int matricula = Integer.parseInt(dados[0]);
+                String matricula = dados[0];
                 String nome = dados[1];
-                double nota = Double.parseDouble(dados[2]);
+                double nota = Double.parseDouble(dados[2].replace(",", ".")); // Substitui a vírgula por ponto
 
                 Aluno aluno = new Aluno();
                 aluno.setMatricula(matricula);
@@ -44,12 +44,6 @@ public class AlunoDao {
                 bw.write(toStringCsv(aluno) + "\n");
             }
         }
-    }
-
-    public void deletarAluno(int matricula) throws IOException {
-        List<Aluno> alunos = lerAlunos();
-        alunos.removeIf(aluno -> aluno.getMatricula() == matricula);
-        salvarAlunos(alunos);
     }
 
     private String toStringCsv(Aluno aluno) {
